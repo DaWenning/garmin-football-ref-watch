@@ -1,0 +1,7 @@
+<menu id="MainMenu">
+    <menu-item id="start_game" label="@Strings.menu_start" />
+    <menu-item id="stats_of_last_game" label="@Strings.menu_stats" />
+    <menu-item id="resetTimer" label="@Strings.menu_resetTimer" />
+    <menu-item id="settings" label="@Strings.menu_settings" />
+    <menu-item id="exit" label="@Strings.menu_exit" />
+</menu>

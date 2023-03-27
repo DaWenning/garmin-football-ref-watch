@@ -1,0 +1,11 @@
+<strings>
+    <string id="AppName">FootballRefWatch</string>
+
+    <string id="prompt">Click the menu button</string>
+
+    <string id="menu_start">Start game</string>
+    <string id="menu_stats">Stats of last game</string>
+    <string id="menu_resetTimer">Reset Timer</string>
+    <string id="menu_settings">Settings</string>
+    <string id="menu_exit">Exit Application</string>
+</strings>

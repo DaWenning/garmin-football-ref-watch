@@ -1,0 +1,5 @@
+<layout id="MainLayout">
+    <label id="quarter" text="1. Viertel" x="center" y="60%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="gameclock" text="12:00" x="center" y="center" font="Gfx.FONT_NUMBER_THAI_HOT" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="daytime" text="00:00" x="center" y="90%" font="Gfx.FONT_TINY" color="Gfx.COLOR_DK_GRAY" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+</layout>

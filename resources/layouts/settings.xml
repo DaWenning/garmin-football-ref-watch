@@ -1,0 +1,13 @@
+<layout id="Settings">
+    <label id="quarterLength" text="Quarter Length: " x="center" y="15%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="quarterLength_8"  text="8"  x="10%" y="30%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" background="Gfx.COLOR_RED"/>
+    <label id="quarterLength_10" text="10" x="35%" y="30%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="quarterLength_12" text="12" x="60%" y="30%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="quarterLength_15" text="15" x="85%" y="30%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+    
+    
+    <label id="numQuarters" text="# Quarters: " x="center" y="45%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+
+</layout>
