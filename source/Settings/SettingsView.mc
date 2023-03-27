@@ -4,6 +4,9 @@ import Toybox.Attention;
 
 class SettingsView extends WatchUi.View {
 
+    private var ql_8_btn, ql_10_btn, ql_12_btn, ql_15_btn;
+    private var nq_1_btn, nq_2_btn, nq_3_btn, nq_4_btn;
+
     function initialize() {
         View.initialize();
     }
@@ -11,6 +14,20 @@ class SettingsView extends WatchUi.View {
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.Settings(dc));
+
+        ql_8_btn  = findDrawableById("ql_8_btn");
+        ql_10_btn = findDrawableById("ql_10_btn");
+        ql_12_btn = findDrawableById("ql_12_btn");
+        ql_15_btn = findDrawableById("ql_15_btn");
+
+        nq_1_btn = findDrawableById("nq_1_btn");
+        nq_2_btn = findDrawableById("nq_2_btn");
+        nq_3_btn = findDrawableById("nq_3_btn");
+        nq_4_btn = findDrawableById("nq_4_btn");
+
+        setQuarterLength(8);
+        setNumQuarters(3);
+        
 
         WatchUi.requestUpdate();
     }
@@ -31,5 +48,14 @@ class SettingsView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
+    }
+
+    
+    function setQuarterLength(newLength) {
+
+    }
+
+    function setNumQuarters(numQuarters) {
+
     }
 }

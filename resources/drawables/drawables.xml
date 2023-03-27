@@ -1,4 +1,36 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
-    
+    <drawable-list id="ql_8_btn">
+        <shape type="rectangle" x="1%" y="30%"  width="23%" height="15%"  
+        color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="ql_10_btn">
+        <shape type="rectangle" x="26%" y="30%"  width="23%" height="15%"  
+        color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="ql_12_btn">
+        <shape type="rectangle" x="51%" y="30%"  width="23%" height="15%"  
+        color="Gfx.COLOR_RED" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="ql_15_btn">
+        <shape type="rectangle" x="76%" y="30%"  width="23%" height="15%"  
+        color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+
+    <drawable-list id="nq_1_btn">
+        <shape type="rectangle" x="1%" y="60%"  width="23%" height="15%"  
+        color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="nq_2_btn">
+        <shape type="rectangle" x="26%" y="60%"  width="23%" height="15%"  
+        color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="nq_3_btn">
+        <shape type="rectangle" x="51%" y="60%"  width="23%" height="15%"  
+        color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="nq_4_btn">
+        <shape type="rectangle" x="76%" y="60%"  width="23%" height="15%"  
+        color="Gfx.COLOR_RED" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
 </drawables>
