@@ -4,9 +4,6 @@ import Toybox.Attention;
 
 class SettingsView extends WatchUi.View {
 
-    private var ql_8_btn, ql_10_btn, ql_12_btn, ql_15_btn;
-    private var nq_1_btn, nq_2_btn, nq_3_btn, nq_4_btn;
-
     function initialize() {
         View.initialize();
     }
@@ -15,18 +12,8 @@ class SettingsView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.Settings(dc));
 
-        ql_8_btn  = findDrawableById("ql_8_btn");
-        ql_10_btn = findDrawableById("ql_10_btn");
-        ql_12_btn = findDrawableById("ql_12_btn");
-        ql_15_btn = findDrawableById("ql_15_btn");
-
-        nq_1_btn = findDrawableById("nq_1_btn");
-        nq_2_btn = findDrawableById("nq_2_btn");
-        nq_3_btn = findDrawableById("nq_3_btn");
-        nq_4_btn = findDrawableById("nq_4_btn");
-
-        setQuarterLength(8);
-        setNumQuarters(3);
+        setQuarterLength(12);
+        setNumQuarters(4);
         
 
         WatchUi.requestUpdate();
@@ -52,10 +39,32 @@ class SettingsView extends WatchUi.View {
 
     
     function setQuarterLength(newLength) {
+        var d8 = findDrawableById("QL_8_BTN") as BgFill;
+        var d10 = findDrawableById("QL_10_BTN") as BgFill;
+        var d12 = findDrawableById("QL_12_BTN") as BgFill;
+        var d15 = findDrawableById("QL_12_BTN") as BgFill;
 
+        d8.setSelected(false);
+        d10.setSelected(false);
+        d12.setSelected(false);
+        d15.setSelected(false);
+
+        var ds = findDrawableById("QL_" + newLength + "_BTN") as BgFill;
+        ds.setSelected(true);
     }
 
     function setNumQuarters(numQuarters) {
+        var n1 = findDrawableById("NQ_1_BTN") as BgFill;
+        var n2 = findDrawableById("NQ_2_BTN") as BgFill;
+        var n3 = findDrawableById("NQ_3_BTN") as BgFill;
+        var n4 = findDrawableById("NQ_4_BTN") as BgFill;
 
+        n1.setSelected(false);
+        n2.setSelected(false);
+        n3.setSelected(false);
+        n4.setSelected(false);
+
+        var ns = findDrawableById("NQ_" + numQuarters + "_BTN") as BgFill;
+        ns.setSelected(true);
     }
 }
