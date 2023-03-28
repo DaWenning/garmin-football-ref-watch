@@ -16,8 +16,8 @@ class SettingsView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.Settings(dc));
 
-        setQuarterLength(Application.getApp().getQuarterLength());
-        setNumQuarters(Application.getApp().getNumQuarters());        
+        setPeriodLength(Application.getApp().getPeriodLength());
+        setNumPeriods(Application.getApp().getNumPeriods());        
 
         WatchUi.requestUpdate();
     }
@@ -41,7 +41,7 @@ class SettingsView extends WatchUi.View {
     }
 
     
-    function setQuarterLength(newLength) {
+    function setPeriodLength(newLength) {
         var d8  = findDrawableById("QL_8_BTN")  as BgFill;
         var d10 = findDrawableById("QL_10_BTN") as BgFill;
         var d12 = findDrawableById("QL_12_BTN") as BgFill;
@@ -54,12 +54,12 @@ class SettingsView extends WatchUi.View {
 
         var ds = findDrawableById("QL_" + newLength + "_BTN") as BgFill;
         ds.setSelected(true);
-        Application.getApp().setQuarterLength(newLength);
+        Application.getApp().setPeriodLength(newLength);
         _mainView.resetTimer();
         WatchUi.requestUpdate();
     }
 
-    function setNumQuarters(numQuarters) {
+    function setNumPeriods(numPeriods) {
         var n1 = findDrawableById("NQ_1_BTN") as BgFill;
         var n2 = findDrawableById("NQ_2_BTN") as BgFill;
         var n3 = findDrawableById("NQ_3_BTN") as BgFill;
@@ -70,9 +70,9 @@ class SettingsView extends WatchUi.View {
         n3.setSelected(false);
         n4.setSelected(false);
 
-        var ns = findDrawableById("NQ_" + numQuarters + "_BTN") as BgFill;
+        var ns = findDrawableById("NQ_" + numPeriods + "_BTN") as BgFill;
         ns.setSelected(true);
-        Application.getApp().setNumQuarters(numQuarters);
+        Application.getApp().setNumPeriods(numPeriods);
         _mainView.resetTimer();
         WatchUi.requestUpdate();
     }

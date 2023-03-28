@@ -4,8 +4,8 @@ import Toybox.WatchUi;
 
 class FootballRefWatchApp extends Application.AppBase {
 
-    private var _quarterLength;
-    private var _numQuarters;
+    private var _periodLength;
+    private var _numPeriods;
 
     private var _startTimes = [];
     private var _stopTimes = [];
@@ -26,17 +26,17 @@ class FootballRefWatchApp extends Application.AppBase {
     function getInitialView() as Array<Views or InputDelegates>? {
 
         // INIT STORAGE
-        _quarterLength = Application.Storage.getValue("QUARTER_LENGTH");
-        //_quarterLength = 0.5;
-        if (_quarterLength == null) {
-            _quarterLength = 12;
-            Application.Storage.setValue("QUARTER_LENGTH", _quarterLength);
+        _periodLength = Application.Storage.getValue("PERIOD_LENGTH");
+        //_periodLength = 0.5;
+        if (_periodLength == null) {
+            _periodLength = 12;
+            Application.Storage.setValue("PERIOD_LENGTH", _periodLength);
         }
 
-        _numQuarters = Application.Storage.getValue("NUM_QUARTERS");
-        if (_numQuarters == null) {
-            _numQuarters = 4;
-            Application.Storage.setValue("NUM_QUARTERS", _numQuarters);
+        _numPeriods = Application.Storage.getValue("NUM_PERIODS");
+        if (_numPeriods == null) {
+            _numPeriods = 4;
+            Application.Storage.setValue("NUM_PERIODS", _numPeriods);
         }
 
 
@@ -46,22 +46,22 @@ class FootballRefWatchApp extends Application.AppBase {
         return [ _mainView, new FootballRefWatchDelegate(_mainView) ] as Array<Views or InputDelegates>;
     }
 
-    function getQuarterLength() as Number  {
-        return _quarterLength;
+    function getPeriodLength() as Number  {
+        return _periodLength;
     }
 
-    function setQuarterLength(length) {
-        _quarterLength = length;
-        Application.Storage.setValue("QUARTER_LENGTH", length);
+    function setPeriodLength(length) {
+        _periodLength = length;
+        Application.Storage.setValue("PERIOD_LENGTH", length);
     }
 
-    function getNumQuarters() as Number {
-        return _numQuarters;
+    function getNumPeriods() as Number {
+        return _numPeriods;
     }
 
-    function setNumQuarters(numQuarters) {
-        _numQuarters = numQuarters;
-        Application.Storage.setValue("NUM_QUATERS", _numQuarters);
+    function setNumPeriods(numPeriods) {
+        _numPeriods = numPeriods;
+        Application.Storage.setValue("NUM_PERIODS", _numPeriods);
     }
 
 }

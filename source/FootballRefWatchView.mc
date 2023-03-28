@@ -12,8 +12,8 @@ class FootballRefWatchView extends WatchUi.View {
     private var _gameclockTimer; 
     private var _gameclockRunning;
 
-    private var _quarterElement;
-    private var _currentQuarter;
+    private var _periodElement;
+    private var _currentPeriod;
 
     function initialize() {
         View.initialize();
@@ -23,19 +23,19 @@ class FootballRefWatchView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
 
-        _currentQuarter = 1;
+        _currentPeriod = 1;
 
         _dayTimeElement = findDrawableById("daytime");
         _dayTimeTimer = new Timer.Timer();
         _dayTimeTimer.start(method(:updateDayTime), 1000, true);
 
         _gameclockElement = findDrawableById("gameclock") as Text;
-        _quarterElement = findDrawableById("quarter") as Text;
+        _periodElement = findDrawableById("period") as Text;
 
-        _gameclockTime = Application.getApp().getQuarterLength() * 60 * 10;
+        _gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
         updateDayTime();
         setGameclockElementText();
-        setQuarterElementText();
+        setPeriodElementText();
         
         WatchUi.requestUpdate();
     }
@@ -67,7 +67,7 @@ class FootballRefWatchView extends WatchUi.View {
 
         if (_gameclockTime == (2 * 60 * 10 )) {        
 
-            if ((_currentQuarter == 2 || _currentQuarter == 4) && Application.getApp().getNumQuarters() == 4) {
+            if ((_currentPeriod == 2 || _currentPeriod == 4) && Application.getApp().getNumPeriods() == 4) {
                 // Two Minute Warning
                 var vibeData = [new Attention.VibeProfile(100, 750)];
                 Attention.vibrate(vibeData);
@@ -75,7 +75,7 @@ class FootballRefWatchView extends WatchUi.View {
             
         }
         else if (_gameclockTime == 0) {
-            // End of Quarter
+            // End of Period
             toggleGameclock();
             var vibeData = [new Attention.VibeProfile(100, 300), 
                             new Attention.VibeProfile(0, 100), 
@@ -96,8 +96,8 @@ class FootballRefWatchView extends WatchUi.View {
         var secs = Math.floor((_gameclockTime - (mins * 600))/10);
         _gameclockElement.setText(mins.format("%02d") + ":" + secs.format("%02d"));
     }
-    function setQuarterElementText() {
-        _quarterElement.setText(_currentQuarter + " / " + Application.getApp().getNumQuarters());
+    function setPeriodElementText() {
+        _periodElement.setText(_currentPeriod + " / " + Application.getApp().getNumPeriods() + " Period");
     }
     function toggleGameclock() {
         if (_gameclockTimer == null) {
@@ -108,10 +108,10 @@ class FootballRefWatchView extends WatchUi.View {
         if (! _gameclockRunning) {
 
             if (_gameclockTime == 0) {
-                // Next Quarter
-                _currentQuarter ++;
-                setQuarterElementText();
-                resetQuarter();
+                // Next Period
+                _currentPeriod ++;
+                setPeriodElementText();
+                resetPeriod();
 
             }
             else {
@@ -132,19 +132,19 @@ class FootballRefWatchView extends WatchUi.View {
         }
 
         _gameclockRunning = false;
-        _gameclockTime = Application.getApp().getQuarterLength() * 60 * 10;
-        _currentQuarter = 1;
+        _gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
+        _currentPeriod = 1;
         setGameclockElementText();
-        setQuarterElementText();
+        setPeriodElementText();
         WatchUi.requestUpdate();
     }
-    function resetQuarter() {
+    function resetPeriod() {
         if (_gameclockTimer != null) {
             _gameclockTimer.stop();
         }
 
         _gameclockRunning = false;
-        _gameclockTime = Application.getApp().getQuarterLength() * 60 * 10;
+        _gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
         setGameclockElementText();
         WatchUi.requestUpdate();
     }

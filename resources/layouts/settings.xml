@@ -1,6 +1,6 @@
 <layout id="Settings">
-    <label id="quarterLength" text="Quarter Length: " x="center" y="15%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />   
-    <label id="numQuarters" text="# Quarters: " x="center" y="45%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="quarterLength" text="Periods Length: " x="center" y="15%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />   
+    <label id="numQuarters" text="# Periods: " x="center" y="45%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     
     <drawable id="QL_8_BTN" class="BgFill">        
         <param name="pos">0</param>
