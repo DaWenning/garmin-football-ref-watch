@@ -4,17 +4,20 @@ import Toybox.Attention;
 
 class SettingsView extends WatchUi.View {
 
-    function initialize() {
+    private var _mainView;
+
+    function initialize(mainView) {
         View.initialize();
+
+        _mainView = mainView;
     }
 
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.Settings(dc));
 
-        setQuarterLength(12);
-        setNumQuarters(4);
-        
+        setQuarterLength(Application.getApp().getQuarterLength());
+        setNumQuarters(Application.getApp().getNumQuarters());        
 
         WatchUi.requestUpdate();
     }
@@ -39,18 +42,21 @@ class SettingsView extends WatchUi.View {
 
     
     function setQuarterLength(newLength) {
-        var d8 = findDrawableById("QL_8_BTN") as BgFill;
+        var d8  = findDrawableById("QL_8_BTN")  as BgFill;
         var d10 = findDrawableById("QL_10_BTN") as BgFill;
         var d12 = findDrawableById("QL_12_BTN") as BgFill;
-        var d15 = findDrawableById("QL_12_BTN") as BgFill;
+        var d15 = findDrawableById("QL_15_BTN") as BgFill;
 
-        d8.setSelected(false);
+        d8 .setSelected(false);
         d10.setSelected(false);
         d12.setSelected(false);
         d15.setSelected(false);
 
         var ds = findDrawableById("QL_" + newLength + "_BTN") as BgFill;
         ds.setSelected(true);
+        Application.getApp().setQuarterLength(newLength);
+        _mainView.resetTimer();
+        WatchUi.requestUpdate();
     }
 
     function setNumQuarters(numQuarters) {
@@ -66,5 +72,8 @@ class SettingsView extends WatchUi.View {
 
         var ns = findDrawableById("NQ_" + numQuarters + "_BTN") as BgFill;
         ns.setSelected(true);
+        Application.getApp().setNumQuarters(numQuarters);
+        _mainView.resetTimer();
+        WatchUi.requestUpdate();
     }
 }

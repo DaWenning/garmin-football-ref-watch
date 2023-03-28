@@ -3,11 +3,11 @@ import Toybox.WatchUi;
 
 class SettingsBehaviorDelegate extends WatchUi.BehaviorDelegate {
 
-    private var view;
+    private var _view;
 
-    function initialize(_view) {
+    function initialize(view) {
         BehaviorDelegate.initialize();
-        view = _view;
+        _view = view;
     }
 
     function onMenu() as Boolean {
@@ -20,9 +20,6 @@ class SettingsBehaviorDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onKey(keyEvent) as Boolean {
-        if (keyEvent.getKey() == 4) {
-
-        }
         return true;
     }
 
@@ -35,17 +32,17 @@ class SettingsBehaviorDelegate extends WatchUi.BehaviorDelegate {
 
         // Quarter Length
         if (110 <= y && y < 195) {
-            if (0 < x && x < 105)        { System.println("New Quarter Length: 8"); }
-            else if (105 < x && x < 210) { System.println("New Quarter Length: 10");}
-            else if (210 < x && x < 315) { System.println("New Quarter Length: 12");}
-            else if (315 < x && x < 420) { System.println("New Quarter Length: 15");}
+            if (0 < x && x < 105)        { _view.setQuarterLength(8);  System.println("New Quarter Length: 8"); }
+            else if (105 < x && x < 210) { _view.setQuarterLength(10); System.println("New Quarter Length: 10");}
+            else if (210 < x && x < 315) { _view.setQuarterLength(12); System.println("New Quarter Length: 12");}
+            else if (315 < x && x < 420) { _view.setQuarterLength(15); System.println("New Quarter Length: 15");}
         } 
         // Num Quarters
         else if (230 <= y && y < 320) {
-            if (0 < x && x < 105)        { System.println("New Quarter Length: 8"); }
-            else if (105 < x && x < 210) { System.println("New Quarter Length: 10");}
-            else if (210 < x && x < 315) { System.println("New Quarter Length: 12");}
-            else if (315 < x && x < 420) { System.println("New Quarter Length: 15");}
+            if (0 < x && x < 105)        { _view.setNumQuarters(1); System.println("New Quarter Length: 8"); }
+            else if (105 < x && x < 210) { _view.setNumQuarters(2); System.println("New Quarter Length: 10");}
+            else if (210 < x && x < 315) { _view.setNumQuarters(3); System.println("New Quarter Length: 12");}
+            else if (315 < x && x < 420) { _view.setNumQuarters(4); System.println("New Quarter Length: 15");}
         }
 
         return true;

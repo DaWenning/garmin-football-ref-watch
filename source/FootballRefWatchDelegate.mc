@@ -20,7 +20,7 @@ class FootballRefWatchDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onKey(keyEvent) as Boolean {
-        System.println(keyEvent.getKey().toString());
+        
         if (keyEvent.getKey() == 4) {
             // Start / Stop Timer
             _mainView.toggleGameclock();

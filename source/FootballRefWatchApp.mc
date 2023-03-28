@@ -4,10 +4,11 @@ import Toybox.WatchUi;
 
 class FootballRefWatchApp extends Application.AppBase {
 
-    private var quarterLength;
-    private var numQuarters;
+    private var _quarterLength;
+    private var _numQuarters;
 
-    private var startTimes;
+    private var _startTimes = [];
+    private var _stopTimes = [];
 
     function initialize() {
         AppBase.initialize();
@@ -25,18 +26,20 @@ class FootballRefWatchApp extends Application.AppBase {
     function getInitialView() as Array<Views or InputDelegates>? {
 
         // INIT STORAGE
-        quarterLength = Application.Storage.getValue("QUARTER_LENGTH");
-        //quarterLength = 0.1;
-        if (quarterLength == null) {
-            quarterLength = 12;
-            Application.Storage.setValue("QUARTER_LENGTH", quarterLength);
+        _quarterLength = Application.Storage.getValue("QUARTER_LENGTH");
+        //_quarterLength = 0.5;
+        if (_quarterLength == null) {
+            _quarterLength = 12;
+            Application.Storage.setValue("QUARTER_LENGTH", _quarterLength);
         }
 
-        numQuarters = Application.Storage.getValue("NUM_QUARTERS");
-        if (numQuarters == null) {
-            numQuarters = 4;
-            Application.Storage.setValue("NUM_QUARTERS", numQuarters);
+        _numQuarters = Application.Storage.getValue("NUM_QUARTERS");
+        if (_numQuarters == null) {
+            _numQuarters = 4;
+            Application.Storage.setValue("NUM_QUARTERS", _numQuarters);
         }
+
+
 
         var _mainView = new FootballRefWatchView();
 
@@ -44,7 +47,21 @@ class FootballRefWatchApp extends Application.AppBase {
     }
 
     function getQuarterLength() as Number  {
-        return quarterLength;
+        return _quarterLength;
+    }
+
+    function setQuarterLength(length) {
+        _quarterLength = length;
+        Application.Storage.setValue("QUARTER_LENGTH", length);
+    }
+
+    function getNumQuarters() as Number {
+        return _numQuarters;
+    }
+
+    function setNumQuarters(numQuarters) {
+        _numQuarters = numQuarters;
+        Application.Storage.setValue("NUM_QUATERS", _numQuarters);
     }
 
 }
