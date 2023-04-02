@@ -23,7 +23,7 @@ class FootballRefWatchMenuDelegate extends WatchUi.MenuInputDelegate {
         } else if (item == :stats_of_last_game) {
             System.println("item 2");        
         } else if (item == :resetTimer) {
-            _mainView .resetTimer();
+            _mainView .resetStartOfGame();
         } else if (item == :settings) {
             var settingsView = new SettingsView(_mainView);
             WatchUi.pushView(settingsView, new SettingsBehaviorDelegate(settingsView), WatchUi.SLIDE_UP);

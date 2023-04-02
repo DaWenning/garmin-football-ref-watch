@@ -1,5 +1,6 @@
 gen/
 mir/
+bin/
 internal-mir/
 FootballRefWatch.prg
 bin/FootballRefWatch.prg.debug.xml

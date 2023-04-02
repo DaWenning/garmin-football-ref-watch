@@ -1,7 +1,7 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class FootballRefWatchDelegate extends WatchUi.BehaviorDelegate {
+class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
 
     private var _mainView;
 

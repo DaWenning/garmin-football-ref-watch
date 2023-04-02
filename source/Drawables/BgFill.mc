@@ -1,6 +1,6 @@
 import Toybox.WatchUi;
 
-class BgFill extends WatchUi.Drawable
+class SelectButton extends WatchUi.Drawable
 {
     private var _pos;
     private var _height;

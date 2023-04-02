@@ -42,38 +42,38 @@ class SettingsView extends WatchUi.View {
 
     
     function setPeriodLength(newLength) {
-        var d8  = findDrawableById("QL_8_BTN")  as BgFill;
-        var d10 = findDrawableById("QL_10_BTN") as BgFill;
-        var d12 = findDrawableById("QL_12_BTN") as BgFill;
-        var d15 = findDrawableById("QL_15_BTN") as BgFill;
+        var d8  = findDrawableById("QL_8_BTN")  as SelectButton;
+        var d10 = findDrawableById("QL_10_BTN") as SelectButton;
+        var d12 = findDrawableById("QL_12_BTN") as SelectButton;
+        var d15 = findDrawableById("QL_15_BTN") as SelectButton;
 
         d8 .setSelected(false);
         d10.setSelected(false);
         d12.setSelected(false);
         d15.setSelected(false);
 
-        var ds = findDrawableById("QL_" + newLength + "_BTN") as BgFill;
+        var ds = findDrawableById("QL_" + newLength + "_BTN") as SelectButton;
         ds.setSelected(true);
         Application.getApp().setPeriodLength(newLength);
-        _mainView.resetTimer();
+        _mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
 
     function setNumPeriods(numPeriods) {
-        var n1 = findDrawableById("NQ_1_BTN") as BgFill;
-        var n2 = findDrawableById("NQ_2_BTN") as BgFill;
-        var n3 = findDrawableById("NQ_3_BTN") as BgFill;
-        var n4 = findDrawableById("NQ_4_BTN") as BgFill;
+        var n1 = findDrawableById("NQ_1_BTN") as SelectButton;
+        var n2 = findDrawableById("NQ_2_BTN") as SelectButton;
+        var n3 = findDrawableById("NQ_3_BTN") as SelectButton;
+        var n4 = findDrawableById("NQ_4_BTN") as SelectButton;
 
         n1.setSelected(false);
         n2.setSelected(false);
         n3.setSelected(false);
         n4.setSelected(false);
 
-        var ns = findDrawableById("NQ_" + numPeriods + "_BTN") as BgFill;
+        var ns = findDrawableById("NQ_" + numPeriods + "_BTN") as SelectButton;
         ns.setSelected(true);
         Application.getApp().setNumPeriods(numPeriods);
-        _mainView.resetTimer();
+        _mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
 }

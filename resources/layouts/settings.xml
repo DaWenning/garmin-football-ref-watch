@@ -2,47 +2,47 @@
     <label id="quarterLength" text="Periods Length: " x="center" y="15%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />   
     <label id="numQuarters" text="# Periods: " x="center" y="45%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     
-    <drawable id="QL_8_BTN" class="BgFill">        
+    <drawable id="QL_8_BTN" class="SelectButton">        
         <param name="pos">0</param>
         <param name="height">0.3</param>
     </drawable>    
 
-    <drawable id="QL_10_BTN" class="BgFill">        
+    <drawable id="QL_10_BTN" class="SelectButton">        
         <param name="pos">1</param>
         <param name="height">0.3</param>
     </drawable>
 
-    <drawable id="QL_12_BTN" class="BgFill">        
+    <drawable id="QL_12_BTN" class="SelectButton">        
         <param name="pos">2</param>
         <param name="height">0.3</param>
     </drawable>
 
-    <drawable id="QL_15_BTN" class="BgFill">
+    <drawable id="QL_15_BTN" class="SelectButton">
         <param name="pos">3</param>
         <param name="height">0.3</param>
     </drawable>
 
-    <drawable id="NQ_1_BTN" class="BgFill">
+    <drawable id="NQ_1_BTN" class="SelectButton">
         <param name="pos">0</param>
         <param name="height">0.6</param>
     </drawable>
 
-    <drawable id="NQ_2_BTN" class="BgFill">
+    <drawable id="NQ_2_BTN" class="SelectButton">
         <param name="pos">1</param>
         <param name="height">0.6</param>
     </drawable>
 
-    <drawable id="NQ_3_BTN" class="BgFill">
+    <drawable id="NQ_3_BTN" class="SelectButton">
         <param name="pos">2</param>
         <param name="height">0.6</param>
     </drawable>
 
-    <drawable id="NQ_4_BTN" class="BgFill">
+    <drawable id="NQ_4_BTN" class="SelectButton">
         <param name="pos">3</param>
         <param name="height">0.6</param>
     </drawable>
 
-    <label id="ql_8_btn_text" text="8"  y="30%" x="12%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="ql_8_btn_text"  text="8"  y="30%" x="12%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <label id="ql_10_btn_text" text="10" y="30%" x="38%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <label id="ql_12_btn_text" text="12" y="30%" x="63%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <label id="ql_15_btn_text" text="15" y="30%" x="88%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />

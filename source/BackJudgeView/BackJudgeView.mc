@@ -2,7 +2,7 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Attention;
 
-class FootballRefWatchView extends WatchUi.View {
+class BackJudgeView extends WatchUi.View {
 
     private var _dayTimeElement;
     private var _dayTimeTimer;
@@ -126,7 +126,7 @@ class FootballRefWatchView extends WatchUi.View {
             _gameclockRunning = false;
         }            
     }
-    function resetTimer() {
+    function resetStartOfGame() {
         if (_gameclockTimer != null) {
             _gameclockTimer.stop();
         }
