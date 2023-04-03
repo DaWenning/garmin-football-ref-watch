@@ -22,6 +22,19 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onTap(clickEvent) as Boolean {
+        var coords = clickEvent.getCoordinates();
+
+        var x = coords[0];
+        var y = coords[1];
+
+
+         if ( y > 200) {
+            System.println("Pushing Umpire View ... ");
+         }
+         else {
+            System.println("Pushing Backjudge View ...");
+         }
+
 
         return true;
     }

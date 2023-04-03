@@ -4,6 +4,8 @@ import Toybox.WatchUi;
 
 class FootballRefWatchApp extends Application.AppBase {
 
+    private var worker;
+
     private var _periodLength;
     private var _numPeriods;
 
@@ -12,6 +14,7 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
+        worker = new Worker();
     }
 
     // onStart() is called on application start up
@@ -43,6 +46,10 @@ class FootballRefWatchApp extends Application.AppBase {
 
         //return [ _mainView, new BackJudgeDelegate(_mainView) ] as Array<Views or InputDelegates>;
         return [new MainView(), new MainDelegate()] as Array<Views or InputDelegate>;
+    }
+
+    function getWorker() {
+        return worker;
     }
 
     function getPeriodLength() as Number  {
