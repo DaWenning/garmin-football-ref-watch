@@ -1,0 +1,4 @@
+<layout id="MainView">
+    <label id="backjudge" text="Backjudge" x="center" y="30%"  justification="Graphics.TEXT_JUSTIFY_CENTER"/>
+    <label id="umpire"    text="Umpire" x="center" y="60%"  justification="Graphics.TEXT_JUSTIFY_CENTER"/>
+</layout>

@@ -21,12 +21,16 @@ class FootballRefWatchMenuDelegate extends WatchUi.MenuInputDelegate {
         if (item == :start_game) {
             //WatchUi.popView(WatchUi.SLIDE_DOWN);
         } else if (item == :stats_of_last_game) {
-            System.println("item 2");        
+            System.println("Displaying Stats of Game ... ");        
         } else if (item == :resetTimer) {
             _mainView .resetStartOfGame();
         } else if (item == :settings) {
             var settingsView = new SettingsView(_mainView);
             WatchUi.pushView(settingsView, new SettingsBehaviorDelegate(settingsView), WatchUi.SLIDE_UP);
+        } else if (item == :item1) {
+            
+        } else if (item == :item2) {
+            System.println("Item 2 ... ");        
         } else if (item == :exit) {
             System.exit();
         }

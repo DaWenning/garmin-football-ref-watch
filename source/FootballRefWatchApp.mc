@@ -24,10 +24,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
-
-        // INIT STORAGE
+        
         _periodLength = Application.Storage.getValue("PERIOD_LENGTH");
-        //_periodLength = 0.5;
         if (_periodLength == null) {
             _periodLength = 12;
             Application.Storage.setValue("PERIOD_LENGTH", _periodLength);
@@ -41,9 +39,10 @@ class FootballRefWatchApp extends Application.AppBase {
 
 
 
-        var _mainView = new FootballRefWatchView();
+        //var _mainView = new BackJudgeView();
 
-        return [ _mainView, new FootballRefWatchDelegate(_mainView) ] as Array<Views or InputDelegates>;
+        //return [ _mainView, new BackJudgeDelegate(_mainView) ] as Array<Views or InputDelegates>;
+        return [new MainView(), new MainDelegate()] as Array<Views or InputDelegate>;
     }
 
     function getPeriodLength() as Number  {
@@ -64,8 +63,4 @@ class FootballRefWatchApp extends Application.AppBase {
         Application.Storage.setValue("NUM_PERIODS", _numPeriods);
     }
 
-}
-
-function getApp() as FootballRefWatchApp {
-    return Application.getApp() as FootballRefWatchApp;
 }
