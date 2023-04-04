@@ -32,7 +32,7 @@ class BackJudgeView extends WatchUi.View {
         _gameclockElement = findDrawableById("gameclock") as Text;
         _periodElement = findDrawableById("period") as Text;
 
-        _gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
+        _gameclockTime = Application.getApp().getWorker().getPeriodLength() * 60 * 10;
         updateDayTime();
         setGameclockElementText();
         setPeriodElementText();
@@ -67,7 +67,7 @@ class BackJudgeView extends WatchUi.View {
 
         if (_gameclockTime == (2 * 60 * 10 )) {        
 
-            if ((_currentPeriod == 2 || _currentPeriod == 4) && Application.getApp().getNumPeriods() == 4) {
+            if ((_currentPeriod == 2 || _currentPeriod == 4) && Application.getApp().getWorker().getNumPeriods() == 4) {
                 // Two Minute Warning
                 var vibeData = [new Attention.VibeProfile(100, 750)];
                 Attention.vibrate(vibeData);
@@ -97,7 +97,7 @@ class BackJudgeView extends WatchUi.View {
         _gameclockElement.setText(mins.format("%02d") + ":" + secs.format("%02d"));
     }
     function setPeriodElementText() {
-        _periodElement.setText(_currentPeriod + " / " + Application.getApp().getNumPeriods() + " Period");
+        _periodElement.setText(_currentPeriod + " / " + Application.getApp().getWorker().getNumPeriods() + " Period");
     }
     function toggleGameclock() {
         if (_gameclockTimer == null) {
@@ -132,7 +132,7 @@ class BackJudgeView extends WatchUi.View {
         }
 
         _gameclockRunning = false;
-        _gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
+        _gameclockTime = Application.getApp().getWorker().getPeriodLength() * 60 * 10;
         _currentPeriod = 1;
         setGameclockElementText();
         setPeriodElementText();
@@ -144,7 +144,7 @@ class BackJudgeView extends WatchUi.View {
         }
 
         _gameclockRunning = false;
-        _gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
+        _gameclockTime = Application.getApp().getWorker().getPeriodLength() * 60 * 10;
         setGameclockElementText();
         WatchUi.requestUpdate();
     }

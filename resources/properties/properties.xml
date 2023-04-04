@@ -1,0 +1,5 @@
+<properties>
+    <property id="periodLength" type="number">12</property>
+    <property id="numPeriods" type="number">4</property>
+    <property id="breakLength" type="number">15</property>    
+</properties>

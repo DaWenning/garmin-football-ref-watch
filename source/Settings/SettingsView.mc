@@ -16,8 +16,8 @@ class SettingsView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.Settings(dc));
 
-        setPeriodLength(Application.getApp().getPeriodLength());
-        setNumPeriods(Application.getApp().getNumPeriods());        
+        setPeriodLength(Application.getApp().getWorker().getPeriodLength());
+        setNumPeriods(Application.getApp().getWorker().getNumPeriods());        
 
         WatchUi.requestUpdate();
     }
@@ -54,7 +54,7 @@ class SettingsView extends WatchUi.View {
 
         var ds = findDrawableById("QL_" + newLength + "_BTN") as SelectButton;
         ds.setSelected(true);
-        Application.getApp().setPeriodLength(newLength);
+        Application.getApp().getWorker().setPeriodLength(newLength);
         _mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
@@ -72,7 +72,7 @@ class SettingsView extends WatchUi.View {
 
         var ns = findDrawableById("NQ_" + numPeriods + "_BTN") as SelectButton;
         ns.setSelected(true);
-        Application.getApp().setNumPeriods(numPeriods);
+        Application.getApp().getWorker().setNumPeriods(numPeriods);
         _mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
