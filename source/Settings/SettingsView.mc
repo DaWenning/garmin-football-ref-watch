@@ -4,20 +4,18 @@ import Toybox.Attention;
 
 class SettingsView extends WatchUi.View {
 
-    private var _mainView;
 
-    function initialize(mainView) {
+    function initialize() {
         View.initialize();
 
-        _mainView = mainView;
     }
 
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.Settings(dc));
 
-        setPeriodLength(Application.getApp().getWorker().getPeriodLength());
-        setNumPeriods(Application.getApp().getWorker().getNumPeriods());        
+        setPeriodLength(Application.getApp().getPeriodLength());
+        setNumPeriods(Application.getApp().getNumPeriods());        
 
         WatchUi.requestUpdate();
     }
@@ -54,8 +52,8 @@ class SettingsView extends WatchUi.View {
 
         var ds = findDrawableById("QL_" + newLength + "_BTN") as SelectButton;
         ds.setSelected(true);
-        Application.getApp().getWorker().setPeriodLength(newLength);
-        _mainView.resetStartOfGame();
+        Application.getApp().setPeriodLength(newLength);
+        //_mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
 
@@ -72,8 +70,8 @@ class SettingsView extends WatchUi.View {
 
         var ns = findDrawableById("NQ_" + numPeriods + "_BTN") as SelectButton;
         ns.setSelected(true);
-        Application.getApp().getWorker().setNumPeriods(numPeriods);
-        _mainView.resetStartOfGame();
+        Application.getApp().setNumPeriods(numPeriods);
+        //_mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
 }

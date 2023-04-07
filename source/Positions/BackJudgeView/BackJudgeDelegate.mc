@@ -3,11 +3,11 @@ import Toybox.WatchUi;
 
 class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _mainView;
+    private var _view;
 
-    function initialize(_view) {
+    function initialize(view) {
         BehaviorDelegate.initialize();
-        _mainView = _view;
+        _view = view;
     }
 
     function onMenu() as Boolean {
@@ -15,7 +15,9 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new FootballRefWatchMenuDelegate(_mainView), WatchUi.SLIDE_UP);
+        if (! Application.getApp().isGameClockRunning()){
+            WatchUi.pushView(new Rez.Menus.MainMenu(), new FootballRefWatchMenuDelegate(), WatchUi.SLIDE_UP);
+        }
         return true;
     }
 
@@ -23,7 +25,7 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
         
         if (keyEvent.getKey() == 4) {
             // Start / Stop Timer
-            _mainView.toggleGameclock();
+            _view.toggleGameClock();
         }
 
         return true;

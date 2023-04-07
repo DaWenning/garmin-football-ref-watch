@@ -3,7 +3,5 @@
     <menu-item id="stats_of_last_game" label="@Strings.menu_stats" />
     <menu-item id="resetTimer" label="@Strings.menu_resetTimer" />
     <menu-item id="settings" label="@Strings.menu_settings" />
-    <menu-item id="item1" label="Item 1" />
-    <menu-item id="item2" label="Item 2" />
     <menu-item id="exit" label="@Strings.menu_exit" />
 </menu>
