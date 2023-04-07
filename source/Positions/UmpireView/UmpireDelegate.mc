@@ -11,11 +11,12 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 
     function onBack() as Boolean {
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new FootballRefWatchMenuDelegate(), WatchUi.SLIDE_UP);
+        _view.resetDown();
         return true;
     }
 
@@ -23,7 +24,7 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
         
         if (keyEvent.getKey() == 4) {
             // Start / Stop Timer
-            //_mainView.toggleGameclock();
+            _view.nextDown();
         }
 
         return true;

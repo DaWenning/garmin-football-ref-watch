@@ -7,6 +7,7 @@ class BackJudgeView extends WatchUi.View {
     private var TWO_MINUTES = 1200;
 
     private var _dayTimeElement;
+    private var _dayTimeTimer;
     private var _gameclockElement;    
     private var _gameclockTimer;     
 
@@ -24,7 +25,7 @@ class BackJudgeView extends WatchUi.View {
         _currentPeriod = 1;
 
         _dayTimeElement = findDrawableById("daytime");
-        var _dayTimeTimer = new Timer.Timer();
+        _dayTimeTimer = new Timer.Timer();
         _dayTimeTimer.start(method(:updateDayTime), 1000, true);
 
         _gameclockElement = findDrawableById("gameclock") as Text;
@@ -53,6 +54,7 @@ class BackJudgeView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
+        _dayTimeTimer.stop();
     }
 
 
