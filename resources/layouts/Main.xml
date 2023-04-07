@@ -1,4 +1,6 @@
 <layout id="MainView">
-    <label id="backjudge" text="Backjudge" x="center" y="30%"  justification="Graphics.TEXT_JUSTIFY_CENTER"/>
-    <label id="umpire"    text="Umpire" x="center" y="60%"  justification="Graphics.TEXT_JUSTIFY_CENTER"/>
+    <bitmap id="stopwatchIcon" x="20%" y="30%" filename="../drawables/stopwatch_60.png" />
+    <bitmap id="footballIcon" x="20%" y="60%" filename="../drawables/football_60.png" />
+    <label id="backjudge" text="Backjudge" x="40%" y="30%"/>
+    <label id="umpire"    text="Umpire" x="40%" y="60%"/>
 </layout>
