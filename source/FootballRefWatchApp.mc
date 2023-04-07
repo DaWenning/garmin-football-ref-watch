@@ -6,8 +6,6 @@ using Toybox.ActivityRecording;
 
 class FootballRefWatchApp extends Application.AppBase {
 
-    private var _activitySession;
-
     private var _periodLength;
     private var _numPeriods;
 
@@ -18,9 +16,11 @@ class FootballRefWatchApp extends Application.AppBase {
     function initialize() {
         AppBase.initialize();
 
+        
+
         _isGameClockRunning = false;
 
-        _periodLength = 0.3; //Properties.getValue("periodLength");
+        _periodLength = Properties.getValue("periodLength");
         if (_periodLength == null) {
             _periodLength = 12;
             //Application.Storage.setValue("PERIOD_LENGTH", _periodLength);
@@ -39,18 +39,12 @@ class FootballRefWatchApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
-        _activitySession = ActivityRecording.createSession({  // set up recording session
-            :name=>"Football Referee",                   // set session name
-            :sport=>Activity.SPORT_GENERIC,              // set sport type
-            :subSport=>Activity.SUB_SPORT_GENERIC        // set sub sport type
-        });
-        _activitySession.start();
+        Attention.backlight(0.6);
     }
 
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
-        _activitySession.stop();
-        _activitySession.discard();
+
     }
 
     // Return the initial view of your application here
