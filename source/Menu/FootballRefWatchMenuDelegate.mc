@@ -15,21 +15,20 @@ class FootballRefWatchMenuDelegate extends WatchUi.MenuInputDelegate {
     
     function onMenuItem(item as Symbol) as Void {
         
-        if (item == :start_game) {
-            //WatchUi.popView(WatchUi.SLIDE_DOWN);
-            Application.getApp().restartGame();
+        if (item == :back_to_position) {
+            WatchUi.pushView(new MainView(), new MainDelegate(), WatchUi.SLIDE_UP);
+        } else if (item == :start_game) {
+            //WatchUi.popView(WatchUi.SLIDE_UP);
         } else if (item == :stats_of_last_game) {
-            System.println("Displaying Stats of Game ... ");        
-        } else if (item == :resetTimer) {
-            //_mainView .resetStartOfGame();
+            var statsView = new GameStatsView();
+            WatchUi.pushView(statsView, new GameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
+        } else if (item == :resetQuarter) {
             Application.getApp().resetGameClock();
+        } else if (item == :restartGame) {
+            Application.getApp().restartGame();
         } else if (item == :settings) {
             var settingsView = new SettingsView();
-            WatchUi.pushView(settingsView, new SettingsBehaviorDelegate(settingsView), WatchUi.SLIDE_UP);
-        // } else if (item == :item1) {
-            
-        // } else if (item == :item2) {
-        //     System.println("Item 2 ... ");        
+            WatchUi.pushView(settingsView, new SettingsBehaviorDelegate(settingsView), WatchUi.SLIDE_UP);      
         } else if (item == :exit) {
             System.exit();
         }

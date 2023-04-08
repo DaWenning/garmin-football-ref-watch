@@ -3,6 +3,7 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 using Toybox.ActivityRecording;
+using Toybox.System;
 
 class FootballRefWatchApp extends Application.AppBase {
 
@@ -13,21 +14,20 @@ class FootballRefWatchApp extends Application.AppBase {
     private var _gameClockTime;
     private var _currentPeriod;
 
-    function initialize() {
-        AppBase.initialize();
 
-        
+    private var _startTimes;
+    private var _endTimes;
+
+    function initialize() {
+        AppBase.initialize();        
 
         _isGameClockRunning = false;
-
-        _periodLength = Properties.getValue("periodLength");
+        _periodLength = 0.1;//Properties.getValue("periodLength");
         if (_periodLength == null) {
             _periodLength = 12;
             //Application.Storage.setValue("PERIOD_LENGTH", _periodLength);
             Application.Properties.setValue("periodLength", _periodLength);
         }
-        resetGameClock();
-
         // _numPeriods = Application.Storage.getValue("NUM_PERIODS");
         _numPeriods = Properties.getValue("numPeriods");
         if (_numPeriods == null) {
@@ -35,6 +35,8 @@ class FootballRefWatchApp extends Application.AppBase {
             // Application.Storage.setValue("NUM_PERIODS", _numPeriods);
             Application.Properties.setValue("numPeriods", _numPeriods);
         }
+
+        restartGame();
     }
 
     // onStart() is called on application start up
@@ -67,7 +69,19 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function getCurrentPeriod() { return _currentPeriod; }
     function setCurrentPeriod(val) { _currentPeriod = val; }
+    function incrementPeriod() { _currentPeriod ++; return getCurrentPeriod(); }
 
+    function getStartTimes() { return _startTimes; }
+    function pushStartTime(time as System.ClockTime) { 
+        _startTimes.add(time); 
+        System.println(_startTimes.toString());
+    }
+
+    function getEndTimes() { return _endTimes; }
+    function pushEndTime(time as System.ClockTime) { 
+        _endTimes.add(time);
+        System.println(_endTimes.toString());
+    }
     
 
 
@@ -75,5 +89,7 @@ class FootballRefWatchApp extends Application.AppBase {
     function restartGame() {
         resetGameClock();
         _currentPeriod = 1;
+        _startTimes = new Array<System.ClockTime>[_periodLength];
+        _endTimes = new Array<System.ClockTime>[_periodLength];
     }
 }

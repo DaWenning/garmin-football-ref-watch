@@ -1,6 +1,8 @@
 <layout id="MainView">
-    <bitmap id="stopwatchIcon" x="20%" y="30%" filename="../drawables/stopwatch_60.png" />
-    <bitmap id="footballIcon" x="20%" y="60%" filename="../drawables/football_60.png" />
-    <label id="backjudge" text="Backjudge" x="40%" y="30%"/>
-    <label id="umpire"    text="Umpire" x="40%" y="60%"/>
+    <label id="version" x="center" y="0" text="@Strings.version" font="Gfx.FONT_TINY" color="Gfx.COLOR_DK_GRAY" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+    <bitmap id="stopwatchIcon" x="15%" y="30%" filename="../drawables/stopwatch_60.png" />
+    <bitmap id="footballIcon"  x="15%" y="60%" filename="../drawables/football_60.png" />
+    <label id="backjudge"  text="Backjudge" x="35%" y="30%"/>
+    <label id="umpire"     text="Umpire"    x="35%" y="60%"/>
 </layout>

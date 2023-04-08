@@ -8,11 +8,11 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
-        return true;
+        System.exit();
     }
 
     function onBack() as Boolean {
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new FootballRefWatchMenuDelegate(), WatchUi.SLIDE_UP);
+        
         return true;
     }
 

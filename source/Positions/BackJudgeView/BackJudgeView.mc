@@ -12,7 +12,6 @@ class BackJudgeView extends WatchUi.View {
     private var _gameclockTimer;     
 
     private var _periodElement;
-    private var _currentPeriod;
 
     function initialize() {
         View.initialize();
@@ -22,7 +21,6 @@ class BackJudgeView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.BackJudge(dc));
 
-        _currentPeriod = 1;
 
         _dayTimeElement = findDrawableById("daytime");
         _dayTimeTimer = new Timer.Timer();
@@ -74,14 +72,17 @@ class BackJudgeView extends WatchUi.View {
         if (! Application.getApp().isGameClockRunning()) {
             if (Application.getApp().getGameClockTime() == 0) {
                 // ACTION: Set Next Period
-                _currentPeriod ++;
+                Application.getApp().incrementPeriod();
                 Application.getApp().setGameClockRunning(false);
-                //_gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
                 Application.getApp().resetGameClock();
                 setGameClockElementText();
                 setPeriodElementText();
+                WatchUi.requestUpdate();
             }
             else {
+                if (Application.getApp().getGameClockTime() == Application.getApp().getPeriodLength() * 60 * 10) {
+                    Application.getApp().pushStartTime(System.getClockTime());
+                }
                 // ACTION: start GameClock
                 Attention.vibrate([new Attention.VibeProfile(50, 100)]);
                 _gameclockTimer.start(method(:updateGameclock), 100, true); 
@@ -98,8 +99,8 @@ class BackJudgeView extends WatchUi.View {
     
     function updateGameclock() as Void {
 
-        if (Application.getApp().getGameClockTime() == TWO_MINUTES) {
-            if ((_currentPeriod == 2 || _currentPeriod == 4) && Application.getApp().getNumPeriods() == 4) {
+        if (Application.getApp().getGameClockTime() == (TWO_MINUTES + 5)) {
+            if ((Application.getApp().getCurrentPeriod() == 2 || Application.getApp().getCurrentPeriod() == 4) && Application.getApp().getNumPeriods() == 4) {
                 // Two Minute Warning
                 var vibeData = [new Attention.VibeProfile(100, 750)];
                 Attention.vibrate(vibeData);
@@ -107,6 +108,7 @@ class BackJudgeView extends WatchUi.View {
         }
         else if (Application.getApp().getGameClockTime() == 0) {
             // End of Period
+            Application.getApp().pushEndTime(System.getClockTime());
             toggleGameClock();
             var vibeData = [new Attention.VibeProfile(100, 300), 
                             new Attention.VibeProfile(0, 100), 
@@ -132,64 +134,6 @@ class BackJudgeView extends WatchUi.View {
     }
 
     function setPeriodElementText() {
-        _periodElement.setText(_currentPeriod + " / " + Application.getApp().getNumPeriods() + " Period");
+        _periodElement.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
     }
-
-
-
-
-
-    /*function toggleGameClock() {
-        if (_gameclockTimer == null) {
-            _gameclockTimer = new Timer.Timer();
-            Application.getApp().setGameClockRunning(false);
-        }
-
-        if (! Application.getApp().isGameClockRunning()) {
-
-            if (Application.getApp().getGameClockTime() == 0) {
-                // Next Period
-                _currentPeriod ++;
-                setPeriodElementText();
-                resetPeriod();
-
-            }
-            else {
-                Attention.vibrate([new Attention.VibeProfile(50, 100)]);
-                _gameclockTimer.start(method(:updateGameclock), 100, true); 
-                Application.getApp().setGameClockRunning(true);
-            }            
-        }
-        else {
-            Attention.vibrate([new Attention.VibeProfile(50, 100)]);
-            _gameclockTimer.stop();
-            Application.getApp().setGameClockRunning(false);
-        }            
-    }*/
-
-    /*function resetStartOfGame() {
-        if (_gameclockTimer != null) {
-            _gameclockTimer.stop();
-        }
-
-        Application.getApp().setGameClockRunning(false);
-        //_gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
-        Application.getApp().resetGameClock();
-        _currentPeriod = 1;
-        setGameClockElementText();
-        setPeriodElementText();
-        WatchUi.requestUpdate();
-    }*/
-
-    /*function resetPeriod() {
-        if (_gameclockTimer != null) {
-            _gameclockTimer.stop();
-        }
-
-        Application.getApp().setGameClockRunning(false);
-        //_gameclockTime = Application.getApp().getPeriodLength() * 60 * 10;
-        Application.getApp().resetGameClock();
-        setGameClockElementText();
-        WatchUi.requestUpdate();
-    }*/
 }
