@@ -22,7 +22,7 @@ class FootballRefWatchApp extends Application.AppBase {
         AppBase.initialize();        
 
         _isGameClockRunning = false;
-        _periodLength = 0.1;//Properties.getValue("periodLength");
+        _periodLength = Properties.getValue("periodLength");
         if (_periodLength == null) {
             _periodLength = 12;
             //Application.Storage.setValue("PERIOD_LENGTH", _periodLength);
