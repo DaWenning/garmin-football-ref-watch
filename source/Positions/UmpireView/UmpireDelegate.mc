@@ -11,7 +11,7 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        if (!_view.isInTimeout()) { WatchUi.pushView(new Rez.Menus.UmpireMenu(), new UmpireMenuDelegate(), WatchUi.SLIDE_UP); }
         return true;
     }
 
@@ -37,12 +37,12 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
 
     
     function homeTimeout() as Boolean { 
-        if (!_view.isInTimeout()) {  _view.startTimeout(true); }        
+        if (!_view.isInTimeout() && Application.getApp().getTimeoutsHome() != 0) {  _view.startTimeout(true); }        
         return true;
     }
 
     function awayTimeout() as Boolean { 
-        if (!_view.isInTimeout()) { _view.startTimeout(false); }
+        if (!_view.isInTimeout() && Application.getApp().getTimeoutsAway() != 0) { _view.startTimeout(false); }
         return true; 
     }
 }

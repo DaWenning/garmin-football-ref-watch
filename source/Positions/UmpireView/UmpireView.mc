@@ -50,12 +50,16 @@ class UmpireView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {
         updateDayTime();
+        _timeoutHomeLabel.setText(Application.getApp().getTimeoutsHome().toString());
+        _timeoutAwayLabel.setText(Application.getApp().getTimeoutsAway().toString());
+        WatchUi.requestUpdate();
     }
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+        
     }
 
     // Called when this View is removed from the screen. Save the
@@ -136,6 +140,7 @@ class UmpireView extends WatchUi.View {
             var vibeData = [new Attention.VibeProfile(100, 300), 
                             new Attention.VibeProfile(0, 100), 
                             new Attention.VibeProfile(100, 300)];
+            Attention.backlight(0.6);
             Attention.vibrate(vibeData);
         }
         else if (_timeoutTime == 0) {
