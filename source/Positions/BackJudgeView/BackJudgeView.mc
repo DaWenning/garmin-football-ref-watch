@@ -84,14 +84,14 @@ class BackJudgeView extends WatchUi.View {
                     Application.getApp().pushStartTime(System.getClockTime());
                 }
                 // ACTION: start GameClock
-                Attention.vibrate([new Attention.VibeProfile(50, 100)]);
+                Attention.vibrate([new Attention.VibeProfile(100, 200)]);
                 _gameclockTimer.start(method(:updateGameclock), 100, true); 
                 Application.getApp().setGameClockRunning(true);
             }
         }
         else {
             // ACTION: stop GameClock
-            Attention.vibrate([new Attention.VibeProfile(50, 100)]);
+            Attention.vibrate([new Attention.VibeProfile(100, 200)]);
             _gameclockTimer.stop();
             Application.getApp().setGameClockRunning(false);
         }

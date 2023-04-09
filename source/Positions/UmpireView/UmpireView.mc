@@ -56,20 +56,20 @@ class UmpireView extends WatchUi.View {
     function nextDown() {
         _currentDown ++;
         if (_currentDown == 2) {
-            var vibeData = [new Attention.VibeProfile(100, 300), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 300)];
+            var vibeData = [new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200)];
             Attention.vibrate(vibeData);
         }
         else if (_currentDown == 3) {
-            var vibeData = [new Attention.VibeProfile(100, 300), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 300), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 300)];
+            var vibeData = [new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200)];
             Attention.vibrate(vibeData);
         }
         else if (_currentDown == 4) {
-            var vibeData = [new Attention.VibeProfile(100, 600), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 600)];
+            var vibeData = [new Attention.VibeProfile(100, 400), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 400)];
             Attention.vibrate(vibeData);
         }
         else if (_currentDown == 5) {
             _currentDown = 1;
-            var vibeData = [new Attention.VibeProfile(100, 1500)];
+            var vibeData = [new Attention.VibeProfile(100, 1000)];
             Attention.vibrate(vibeData);
         }
         _downElement.setText(_currentDown.toString());
@@ -79,7 +79,7 @@ class UmpireView extends WatchUi.View {
     function resetDown() {
         _currentDown = 1;
         _downElement.setText(_currentDown.toString());
-        var vibeData = [new Attention.VibeProfile(100, 300)];
+        var vibeData = [new Attention.VibeProfile(100, 200)];
             Attention.vibrate(vibeData);
         WatchUi.requestUpdate();
     }
