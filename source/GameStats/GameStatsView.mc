@@ -11,7 +11,9 @@ class GameStatsView extends WatchUi.View {
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.GameStats(dc));
+    }
 
+    function onShow() as Void {  
         var startTimes = Application.getApp().getStartTimes();
         var endTimes   = Application.getApp().getEndTimes();
 
@@ -49,9 +51,6 @@ class GameStatsView extends WatchUi.View {
             }
             
         }
-    }
-
-    function onShow() as Void {  
     }
 
     // Update the view

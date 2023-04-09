@@ -22,7 +22,7 @@ class FootballRefWatchApp extends Application.AppBase {
         AppBase.initialize();        
 
         _isGameClockRunning = false;
-        _periodLength = Properties.getValue("periodLength");
+        _periodLength = 2.5;//Properties.getValue("periodLength");
         if (_periodLength == null) {
             _periodLength = 12;
             //Application.Storage.setValue("PERIOD_LENGTH", _periodLength);
@@ -73,13 +73,13 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function getStartTimes() { return _startTimes; }
     function pushStartTime(time as System.ClockTime) { 
-        _startTimes.add(time); 
+        _startTimes[_currentPeriod - 1] = time;
         System.println(_startTimes.toString());
     }
 
     function getEndTimes() { return _endTimes; }
     function pushEndTime(time as System.ClockTime) { 
-        _endTimes.add(time);
+        _endTimes[_currentPeriod - 1] = time;
         System.println(_endTimes.toString());
     }
     
@@ -89,7 +89,8 @@ class FootballRefWatchApp extends Application.AppBase {
     function restartGame() {
         resetGameClock();
         _currentPeriod = 1;
-        _startTimes = new Array<System.ClockTime>[_periodLength];
-        _endTimes = new Array<System.ClockTime>[_periodLength];
+        _startTimes = new Array<System.ClockTime>[_numPeriods];
+        _endTimes = new Array<System.ClockTime>[_numPeriods];
+
     }
 }
