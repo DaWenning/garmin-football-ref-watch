@@ -16,7 +16,7 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
 
     function onBack() as Boolean {
         if (! Application.getApp().isGameClockRunning()){
-            WatchUi.pushView(new Rez.Menus.MainMenu(), new FootballRefWatchMenuDelegate(), WatchUi.SLIDE_UP);
+            WatchUi.pushView(new Rez.Menus.BackJudgeMenu(), new BackJudgeMenuDelegate(), WatchUi.SLIDE_UP);
         }
         return true;
     }

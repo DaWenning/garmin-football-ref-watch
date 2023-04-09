@@ -16,7 +16,7 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
-        _view.resetDown();
+        if (!_view.isInTimeout()) {_view.resetDown();}
         return true;
     }
 
@@ -24,7 +24,7 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
         
         if (keyEvent.getKey() == 4) {
             // Start / Stop Timer
-            _view.nextDown();
+            if (!_view.isInTimeout()) { _view.nextDown(); }
         }
 
         return true;
@@ -33,5 +33,16 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
     function onTap(clickEvent) as Boolean {
 
         return true;
+    }
+
+    
+    function homeTimeout() as Boolean { 
+        if (!_view.isInTimeout()) {  _view.startTimeout(true); }        
+        return true;
+    }
+
+    function awayTimeout() as Boolean { 
+        if (!_view.isInTimeout()) { _view.startTimeout(false); }
+        return true; 
     }
 }

@@ -18,6 +18,9 @@ class FootballRefWatchApp extends Application.AppBase {
     private var _startTimes;
     private var _endTimes;
 
+    private var _timeoutsHome;
+    private var _timeoutsAway;
+
     function initialize() {
         AppBase.initialize();        
 
@@ -74,6 +77,11 @@ class FootballRefWatchApp extends Application.AppBase {
     function getEndTimes() { return _endTimes; }
     function pushEndTime(time as System.ClockTime) { _endTimes[_currentPeriod - 1] = time; }
     
+    function getTimeoutsHome() { return _timeoutsHome; }
+    function decrementTimeoutsHome() as Number { _timeoutsHome = _timeoutsHome - 1; return _timeoutsHome ; }
+
+    function getTimeoutsAway() { return _timeoutsAway; }
+    function decrementTimeoutsAway() as Number { _timeoutsAway = _timeoutsAway - 1; return _timeoutsAway; }
 
 
 
@@ -82,5 +90,7 @@ class FootballRefWatchApp extends Application.AppBase {
         _currentPeriod = 1;
         _startTimes = new Array<System.ClockTime>[_numPeriods];
         _endTimes = new Array<System.ClockTime>[_numPeriods];
+        _timeoutsHome = 3;
+        _timeoutsAway = 3;
     }
 }

@@ -1,4 +1,4 @@
-<menu id="MainMenu">
+<menu id="BackJudgeMenu">
     <menu-item id="back_to_position" label="Back to title" />
     <menu-item id="start_game" label="Back to BJ View" />
     <menu-item id="stats_of_last_game" label="@Strings.menu_stats" />

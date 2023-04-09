@@ -1,6 +1,7 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Attention;
+import Toybox.Sensor;
 
 class BackJudgeView extends WatchUi.View {
 
@@ -15,6 +16,8 @@ class BackJudgeView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
+        //Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
+        //Sensor.enableSensorEvents(method(:onHeartBeat));
     }
 
     // Load your resources here
@@ -29,7 +32,7 @@ class BackJudgeView extends WatchUi.View {
         _gameclockElement = findDrawableById("gameclock") as Text;
         _periodElement = findDrawableById("period") as Text;
         _gameclockTimer = new Timer.Timer();
-        
+
         WatchUi.requestUpdate();
     }
 
@@ -135,5 +138,9 @@ class BackJudgeView extends WatchUi.View {
 
     function setPeriodElementText() {
         _periodElement.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
+    }
+
+    function onHeartBeat(info as Sensor.Info) as Void {
+        System.println("Heart Rate: " + info.heartRate);
     }
 }
