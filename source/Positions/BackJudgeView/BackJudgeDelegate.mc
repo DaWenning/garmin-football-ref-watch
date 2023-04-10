@@ -23,7 +23,7 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
 
     function onKey(keyEvent) as Boolean {
         
-        if (keyEvent.getKey() == 4) {
+        if (keyEvent.getKey() == 4 && !Application.getApp().isHalfTimeBreak()) {
             // Start / Stop Timer
             _view.toggleGameClock();
         }

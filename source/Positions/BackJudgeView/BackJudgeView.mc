@@ -74,13 +74,41 @@ class BackJudgeView extends WatchUi.View {
 
         if (! Application.getApp().isGameClockRunning()) {
             if (Application.getApp().getGameClockTime() == 0) {
-                // ACTION: Set Next Period
-                Application.getApp().incrementPeriod();
-                Application.getApp().setGameClockRunning(false);
-                Application.getApp().resetGameClock();
-                setGameClockElementText();
-                setPeriodElementText();
-                WatchUi.requestUpdate();
+
+                if (Application.getApp().isHalfTimeBreak()) {
+                    System.println("End of Halftime ... ");
+                    // ACTION: Set Next Period
+                    Application.getApp().setHalfTimeBreak(false);
+                    Application.getApp().incrementPeriod();
+                    _gameclockTimer.stop();
+                    Application.getApp().setGameClockRunning(false);
+                    Application.getApp().resetGameClock();
+                    setGameClockElementText();
+                    setPeriodElementText();
+                    WatchUi.requestUpdate();
+                } else if (Application.getApp().getCurrentPeriod() == 2 && Application.getApp().getNumPeriods() == 4) {
+                    System.println("Starting Halftime Break ...");
+                    Application.getApp().setHalfTimeBreak(true);
+                    Application.getApp().setGameClockToHalftime();
+                    setGameClockElementText();
+                    setPeriodElementText();
+                    _gameclockTimer.start(method(:updateGameclock), 100, true); 
+                    WatchUi.requestUpdate();
+                } else if (Application.getApp().getCurrentPeriod() < Application.getApp().getNumPeriods()){
+                    System.println("Next Period ... ");
+                    // ACTION: Set Next Period
+                    Application.getApp().incrementPeriod();
+                    _gameclockTimer.stop();
+                    Application.getApp().setGameClockRunning(false);
+                    Application.getApp().resetGameClock();
+                    setGameClockElementText();
+                    setPeriodElementText();
+                    WatchUi.requestUpdate();
+                } else {
+                    // Game is over!!!
+                    var statsView = new GameStatsView();
+                    WatchUi.pushView(statsView, new GameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
+                }
             }
             else {
                 if (Application.getApp().getGameClockTime() == Application.getApp().getPeriodLength() * 60 * 10) {
@@ -110,15 +138,16 @@ class BackJudgeView extends WatchUi.View {
             }            
         }
         else if (Application.getApp().getGameClockTime() == 0) {
-            // End of Period
-            Application.getApp().pushEndTime(System.getClockTime());
-            toggleGameClock();
+
+            Application.getApp().pushEndTime(System.getClockTime());                
             var vibeData = [new Attention.VibeProfile(100, 300), 
-                            new Attention.VibeProfile(0, 100), 
-                            new Attention.VibeProfile(100, 300), 
-                            new Attention.VibeProfile(0, 100), 
-                            new Attention.VibeProfile(100, 300)];
+                        new Attention.VibeProfile(0, 100), 
+                        new Attention.VibeProfile(100, 300), 
+                        new Attention.VibeProfile(0, 100), 
+                        new Attention.VibeProfile(100, 300)];
             Attention.vibrate(vibeData);
+            toggleGameClock();
+            
             return;
         }
 
@@ -137,7 +166,12 @@ class BackJudgeView extends WatchUi.View {
     }
 
     function setPeriodElementText() {
-        _periodElement.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
+        if (Application.getApp().isHalfTimeBreak()) {
+            _periodElement.setText("Halftime");
+        }
+        else {
+            _periodElement.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
+        }
     }
 
     function onHeartBeat(info as Sensor.Info) as Void {

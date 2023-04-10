@@ -13,6 +13,7 @@ class FootballRefWatchApp extends Application.AppBase {
     private var _isGameClockRunning;
     private var _gameClockTime;
     private var _currentPeriod;
+    private var _isHalfTimeBreak;
 
 
     private var _startTimes;
@@ -66,6 +67,7 @@ class FootballRefWatchApp extends Application.AppBase {
     function getGameClockTime() { return _gameClockTime; }
     function decrementGameClockTime() { _gameClockTime --; }
     function resetGameClock() { _gameClockTime = getPeriodLength() * 60 * 10; }
+    function setGameClockToHalftime() { _gameClockTime = 15 * 60 * 10;  }
 
     function getCurrentPeriod() { return _currentPeriod; }
     function setCurrentPeriod(val) { _currentPeriod = val; }
@@ -83,6 +85,9 @@ class FootballRefWatchApp extends Application.AppBase {
     function getTimeoutsAway() { return _timeoutsAway; }
     function decrementTimeoutsAway() as Number { _timeoutsAway = _timeoutsAway - 1; return _timeoutsAway; }
 
+    function isHalfTimeBreak() { return _isHalfTimeBreak; }
+    function setHalfTimeBreak(val) { _isHalfTimeBreak = val; }
+
 
 
     function restartGame() {
@@ -92,5 +97,6 @@ class FootballRefWatchApp extends Application.AppBase {
         _endTimes = new Array<System.ClockTime>[_numPeriods];
         _timeoutsHome = 3;
         _timeoutsAway = 3;
+        _isHalfTimeBreak = false;
     }
 }
