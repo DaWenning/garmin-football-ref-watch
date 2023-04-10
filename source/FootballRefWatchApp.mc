@@ -7,8 +7,9 @@ using Toybox.System;
 
 class FootballRefWatchApp extends Application.AppBase {
 
-    private var _periodLength;
-    private var _numPeriods;
+    private var _PERIOD_LENGTH;
+    private var _NUM_PERIODS;
+    private var _HALFTIME_LENGTH;
 
     private var _isGameClockRunning;
     private var _gameClockTime;
@@ -26,15 +27,21 @@ class FootballRefWatchApp extends Application.AppBase {
         AppBase.initialize();        
 
         _isGameClockRunning = false;
-        _periodLength = Properties.getValue("periodLength");
-        if (_periodLength == null) {
-            _periodLength = 12;
-            Application.Properties.setValue("periodLength", _periodLength);
+        _PERIOD_LENGTH = Properties.getValue("periodLength");
+        if (_PERIOD_LENGTH == null) {
+            _PERIOD_LENGTH = 12;
+            Application.Properties.setValue("periodLength", _PERIOD_LENGTH);
         }
-        _numPeriods = Properties.getValue("numPeriods");
-        if (_numPeriods == null) {
-            _numPeriods = 4;
-            Application.Properties.setValue("numPeriods", _numPeriods);
+        _NUM_PERIODS = Properties.getValue("numPeriods");
+        if (_NUM_PERIODS == null) {
+            _NUM_PERIODS = 4;
+            Application.Properties.setValue("numPeriods", _NUM_PERIODS);
+        }
+
+        _HALFTIME_LENGTH = Properties.getValue("halfTimeLength");
+         if (_HALFTIME_LENGTH == null) {
+            _HALFTIME_LENGTH = 15;
+            Application.Properties.setValue("halfTimeLength", _HALFTIME_LENGTH);
         }
 
         restartGame();
@@ -55,11 +62,11 @@ class FootballRefWatchApp extends Application.AppBase {
         return [new MainView(), new MainDelegate()] as Array<Views or InputDelegate>;
     }
 
-    function getPeriodLength() { return _periodLength; }
-    function setPeriodLength(val) { _periodLength = val; Properties.setValue("periodLength", _periodLength);}
+    function getPeriodLength() { return _PERIOD_LENGTH; }
+    function setPeriodLength(val) { _PERIOD_LENGTH = val; Properties.setValue("periodLength", _PERIOD_LENGTH);}
 
-    function getNumPeriods() { return _numPeriods; }
-    function setNumPeriods(val) { _numPeriods = val; Properties.setValue("numPeriods", _numPeriods);}  
+    function getNumPeriods() { return _NUM_PERIODS; }
+    function setNumPeriods(val) { _NUM_PERIODS = val; Properties.setValue("numPeriods", _NUM_PERIODS);}  
 
     function isGameClockRunning() { return _isGameClockRunning; }
     function setGameClockRunning(newClockStatus) { _isGameClockRunning = newClockStatus; }
@@ -67,7 +74,7 @@ class FootballRefWatchApp extends Application.AppBase {
     function getGameClockTime() { return _gameClockTime; }
     function decrementGameClockTime() { _gameClockTime --; }
     function resetGameClock() { _gameClockTime = getPeriodLength() * 60 * 10; }
-    function setGameClockToHalftime() { _gameClockTime = 15 * 60 * 10;  }
+    function setGameClockToHalftime() { _gameClockTime = _HALFTIME_LENGTH * 60 * 10;  }
 
     function getCurrentPeriod() { return _currentPeriod; }
     function setCurrentPeriod(val) { _currentPeriod = val; }
@@ -93,8 +100,8 @@ class FootballRefWatchApp extends Application.AppBase {
     function restartGame() {
         resetGameClock();
         _currentPeriod = 1;
-        _startTimes = new Array<System.ClockTime>[_numPeriods];
-        _endTimes = new Array<System.ClockTime>[_numPeriods];
+        _startTimes = new Array<System.ClockTime>[_NUM_PERIODS];
+        _endTimes = new Array<System.ClockTime>[_NUM_PERIODS];
         _timeoutsHome = 3;
         _timeoutsAway = 3;
         _isHalfTimeBreak = false;

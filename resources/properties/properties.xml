@@ -1,5 +1,7 @@
 <properties>
     <property id="periodLength" type="number">12</property>
     <property id="numPeriods" type="number">4</property>
-    <property id="breakLength" type="number">15</property>    
+    <property id="halfTimeLength" type="number">15</property> 
+    <property id="homeTeamColor" type="string"></property>
+    <property id="awayTeamColor" type="string"></property>   
 </properties>
