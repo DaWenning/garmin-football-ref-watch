@@ -1,6 +1,9 @@
 <menu id="UmpireMenu">
     <menu-item id="back_to_position" label="Back to title" />
     <menu-item id="start_game" label="Back to U View" />
-    <menu-item id="restartGame" label="Restart Half" />
+    <menu-item id="next_quarter" label="Next Quarter" />
+    <menu-item id="add_TO_home" label="Add one TO Home" />
+    <menu-item id="add_TO_away" label="Add one TO Away" />
+    <menu-item id="restart_game" label="Restart Half" />
     <menu-item id="exit" label="@Strings.menu_exit" />
 </menu>

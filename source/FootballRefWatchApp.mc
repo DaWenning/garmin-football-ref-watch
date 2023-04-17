@@ -22,6 +22,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
     private var _timeoutsHome;
     private var _timeoutsAway;
+    private var _usedTimeoutsHome;
+    private var _usedTimeoutsAway;
 
     function initialize() {
         AppBase.initialize();        
@@ -87,10 +89,14 @@ class FootballRefWatchApp extends Application.AppBase {
     function pushEndTime(time as System.ClockTime) { _endTimes[_currentPeriod - 1] = time; }
     
     function getTimeoutsHome() { return _timeoutsHome; }
-    function decrementTimeoutsHome() as Number { _timeoutsHome = _timeoutsHome - 1; return _timeoutsHome ; }
+    function resetTimeoutsHome() { _timeoutsHome = 3; return _timeoutsHome; }
+    function decrementTimeoutsHome() as Number { if (_timeoutsHome != 0) {_timeoutsHome = _timeoutsHome - 1;} return _timeoutsHome ; }
+    function incrementTimeoutsHome() as Number { if (_timeoutsHome != 3) {_timeoutsHome = _timeoutsHome + 1;} return _timeoutsHome ; }
 
     function getTimeoutsAway() { return _timeoutsAway; }
-    function decrementTimeoutsAway() as Number { _timeoutsAway = _timeoutsAway - 1; return _timeoutsAway; }
+    function resetTimeoutsAway() { _timeoutsAway = 3; return _timeoutsAway; }
+    function decrementTimeoutsAway() as Number { if (_timeoutsHome != 0) {_timeoutsAway = _timeoutsAway - 1;} return _timeoutsAway; }
+    function incrementTimeoutsAway() as Number { if (_timeoutsHome != 3) {_timeoutsAway = _timeoutsAway + 1;} return _timeoutsAway; }
 
     function isHalfTimeBreak() { return _isHalfTimeBreak; }
     function setHalfTimeBreak(val) { _isHalfTimeBreak = val; }
@@ -102,6 +108,8 @@ class FootballRefWatchApp extends Application.AppBase {
         _currentPeriod = 1;
         _startTimes = new Array<System.ClockTime>[_NUM_PERIODS];
         _endTimes = new Array<System.ClockTime>[_NUM_PERIODS];
+        _usedTimeoutsHome = new Array<Number>[6];
+        _usedTimeoutsAway = new Array<Number>[6];
         _timeoutsHome = 3;
         _timeoutsAway = 3;
         _isHalfTimeBreak = false;

@@ -18,6 +18,8 @@ class UmpireView extends WatchUi.View {
 
     private var _timeoutHomeLabel;
     private var _timeoutAwayLabel;
+    private var _periodLabel;
+
 
     function initialize() {
         View.initialize();
@@ -43,6 +45,8 @@ class UmpireView extends WatchUi.View {
 
         //_timeoutHomeSelectable = findDrawableById("timeoutHomeSelectable");
         //_timeoutAwaySelectable = findDrawableById("timeoutAwaySelectable");
+        _periodLabel = findDrawableById("period") as Text;
+        
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -52,6 +56,7 @@ class UmpireView extends WatchUi.View {
         updateDayTime();
         _timeoutHomeLabel.setText(Application.getApp().getTimeoutsHome().toString());
         _timeoutAwayLabel.setText(Application.getApp().getTimeoutsAway().toString());
+        _periodLabel.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
         WatchUi.requestUpdate();
     }
 
