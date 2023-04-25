@@ -1,6 +1,7 @@
 <menu id="UmpireMenu">
     <menu-item id="back_to_position" label="Back to title" />
     <menu-item id="start_game" label="Back to U View" />
+    <menu-item id="game_stats" label="@Strings.menu_stats" />
     <menu-item id="next_quarter" label="Next Quarter" />
     <menu-item id="add_TO_home" label="Add one TO Home" />
     <menu-item id="add_TO_away" label="Add one TO Away" />

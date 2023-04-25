@@ -19,6 +19,10 @@ class UmpireMenuDelegate extends WatchUi.MenuInputDelegate {
             WatchUi.pushView(new MainView(), new MainDelegate(), WatchUi.SLIDE_UP);
         } else if (item == :start_game) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
+        } else if (item == :game_stats) {
+            //WatchUi.popView(WatchUi.SLIDE_UP);
+            var statsView = new UGameStatsView();
+            WatchUi.pushView(statsView, new UGameStatsDelegate(statsView), WatchUi.SLIDE_UP);  
         } else if (item == :next_quarter) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
             var nextQuarter = Application.getApp().incrementPeriod();
