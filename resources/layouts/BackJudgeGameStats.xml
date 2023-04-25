@@ -1,0 +1,16 @@
+<layout id="BJGameStats">
+    <label id="first"  text="1.:" x="3%" y="30%" font="Gfx.FONT_SMALL"/>
+    <label id="second" text="2.:" x="3%" y="40%" font="Gfx.FONT_SMALL"/>
+    <label id="third"  text="3.:" x="3%" y="50%" font="Gfx.FONT_SMALL"/>
+    <label id="fourth" text="4.:" x="3%" y="60%" font="Gfx.FONT_SMALL"/>
+
+    <label id="time_0" text="15:00 - 15:30" x="15%" y="30%" font="Gfx.FONT_SMALL"/>
+    <label id="time_1" text="15:30 - 16:15" x="15%" y="40%" font="Gfx.FONT_SMALL"/>
+    <label id="time_2" text="16:30 - 17:00" x="15%" y="50%" font="Gfx.FONT_SMALL"/>
+    <label id="time_3" text="17:00 - 17:45" x="15%" y="60%" font="Gfx.FONT_SMALL"/>
+
+    <label id="duration_0" text="00:30" x="75%" y="30%" font="Gfx.FONT_SMALL"/>
+    <label id="duration_1" text="00:45" x="75%" y="40%" font="Gfx.FONT_SMALL"/>
+    <label id="duration_2" text="00:30" x="75%" y="50%" font="Gfx.FONT_SMALL"/>
+    <label id="duration_3" text="00:45" x="75%" y="60%" font="Gfx.FONT_SMALL"/>
+</layout>

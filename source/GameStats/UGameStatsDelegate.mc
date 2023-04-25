@@ -1,7 +1,7 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class GameStatsDelegate extends WatchUi.BehaviorDelegate {
+class UGameStatsDelegate extends WatchUi.BehaviorDelegate {
 
     private var _view;
 

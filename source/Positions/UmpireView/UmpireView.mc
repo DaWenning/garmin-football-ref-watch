@@ -31,7 +31,7 @@ class UmpireView extends WatchUi.View {
 
         _dayTimeElement = findDrawableById("daytime");
         _dayTimeTimer = new Timer.Timer();
-        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
+        
 
         _downElement = findDrawableById("down");
         _currentDown = 1;
@@ -54,6 +54,8 @@ class UmpireView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {
         updateDayTime();
+        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
+
         _timeoutHomeLabel.setText(Application.getApp().getTimeoutsHome().toString());
         _timeoutAwayLabel.setText(Application.getApp().getTimeoutsAway().toString());
         _periodLabel.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
@@ -149,15 +151,20 @@ class UmpireView extends WatchUi.View {
             Attention.vibrate(vibeData);
         }
         else if (_timeoutTime == 0) {
-            _isInTimeout = false;
-            _timeoutTimer.stop();
-            var vibeData = [new Attention.VibeProfile(100, 500), 
+            stopTimeout();
+        }
+    }
+
+    function stopTimeout() {
+        _timeoutTime = 0;
+         _isInTimeout = false;
+        _timeoutTimer.stop();
+        var vibeData = [new Attention.VibeProfile(100, 500), 
                             new Attention.VibeProfile(0, 100), 
                             new Attention.VibeProfile(100, 500)];
-            Attention.vibrate(vibeData);
-            _downElement.setColor(Graphics.COLOR_WHITE);
-            _downElement.setText(_currentDown.toString());
-        }
+        Attention.vibrate(vibeData);
+        _downElement.setColor(Graphics.COLOR_WHITE);
+        _downElement.setText(_currentDown.toString());
     }
 
 }

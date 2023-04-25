@@ -2,7 +2,7 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Attention;
 
-class GameStatsView extends WatchUi.View {
+class UGameStatsView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
@@ -10,7 +10,7 @@ class GameStatsView extends WatchUi.View {
 
     // Load your resources here
     function onLayout(dc as Dc) as Void {
-        setLayout(Rez.Layouts.GameStats(dc));
+        setLayout(Rez.Layouts.UGameStats(dc));
     }
 
     function onShow() as Void {  

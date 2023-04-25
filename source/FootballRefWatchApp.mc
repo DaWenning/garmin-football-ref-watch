@@ -95,8 +95,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function getTimeoutsAway() { return _timeoutsAway; }
     function resetTimeoutsAway() { _timeoutsAway = 3; return _timeoutsAway; }
-    function decrementTimeoutsAway() as Number { if (_timeoutsHome != 0) {_timeoutsAway = _timeoutsAway - 1;} return _timeoutsAway; }
-    function incrementTimeoutsAway() as Number { if (_timeoutsHome != 3) {_timeoutsAway = _timeoutsAway + 1;} return _timeoutsAway; }
+    function decrementTimeoutsAway() as Number { if (_timeoutsAway != 0) {_timeoutsAway = _timeoutsAway - 1;} return _timeoutsAway; }
+    function incrementTimeoutsAway() as Number { if (_timeoutsAway != 3) {_timeoutsAway = _timeoutsAway + 1;} return _timeoutsAway; }
 
     function isHalfTimeBreak() { return _isHalfTimeBreak; }
     function setHalfTimeBreak(val) { _isHalfTimeBreak = val; }

@@ -20,8 +20,8 @@ class BackJudgeMenuDelegate extends WatchUi.MenuInputDelegate {
         } else if (item == :start_game) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
         } else if (item == :stats_of_last_game) {
-            var statsView = new GameStatsView();
-            WatchUi.pushView(statsView, new GameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
+            var statsView = new BJGameStatsView();
+            WatchUi.pushView(statsView, new BJGameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
         } else if (item == :resetQuarter) {
             Application.getApp().resetGameClock();
         } else if (item == :restartGame) {

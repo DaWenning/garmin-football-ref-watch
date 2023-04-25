@@ -29,9 +29,11 @@ class UmpireMenuDelegate extends WatchUi.MenuInputDelegate {
         } else if (item == :add_TO_home) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
             Application.getApp().incrementTimeoutsHome();
+            WatchUi.requestUpdate();
         } else if (item == :add_TO_away) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
-            Application.getApp().incrementTimeoutsHome();
+            Application.getApp().incrementTimeoutsAway();
+            WatchUi.requestUpdate();
         } else if (item == :restart_game) {
             Application.getApp().restartGame();
         } else if (item == :exit) {

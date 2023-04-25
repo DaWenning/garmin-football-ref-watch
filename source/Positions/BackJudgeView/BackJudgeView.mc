@@ -106,8 +106,8 @@ class BackJudgeView extends WatchUi.View {
                     WatchUi.requestUpdate();
                 } else {
                     // Game is over!!!
-                    var statsView = new GameStatsView();
-                    WatchUi.pushView(statsView, new GameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
+                    var statsView = new BJGameStatsView();
+                    WatchUi.pushView(statsView, new BJGameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
                 }
             }
             else {

@@ -12,6 +12,7 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
 
     function onMenu() as Boolean {
         if (!_view.isInTimeout()) { WatchUi.pushView(new Rez.Menus.UmpireMenu(), new UmpireMenuDelegate(), WatchUi.SLIDE_UP); }
+        else {_view.stopTimeout();}
         return true;
     }
 

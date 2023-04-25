@@ -1,4 +1,4 @@
-<layout id="GameStats">
+<layout id="UGameStats">
     <label id="first"  text="1.:" x="3%" y="30%" font="Gfx.FONT_SMALL"/>
     <label id="second" text="2.:" x="3%" y="40%" font="Gfx.FONT_SMALL"/>
     <label id="third"  text="3.:" x="3%" y="50%" font="Gfx.FONT_SMALL"/>
