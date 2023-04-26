@@ -53,6 +53,8 @@ class SettingsView extends WatchUi.View {
         var ds = findDrawableById("QL_" + newLength + "_BTN") as SelectButton;
         ds.setSelected(true);
         Application.getApp().setPeriodLength(newLength);
+        Application.getApp().setGameClockRunning(false);
+        Application.getApp().resetGameClock();
         //_mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
@@ -71,6 +73,8 @@ class SettingsView extends WatchUi.View {
         var ns = findDrawableById("NQ_" + numPeriods + "_BTN") as SelectButton;
         ns.setSelected(true);
         Application.getApp().setNumPeriods(numPeriods);
+        Application.getApp().setGameClockRunning(false);
+        Application.getApp().resetGameClock();
         //_mainView.resetStartOfGame();
         WatchUi.requestUpdate();
     }
