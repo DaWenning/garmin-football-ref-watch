@@ -79,6 +79,7 @@ class FootballRefWatchApp extends Application.AppBase {
     function setGameClockToHalftime() { _gameClockTime = _HALFTIME_LENGTH * 60 * 10;  }
 
     function getCurrentPeriod() { return _currentPeriod; }
+    function getCurrentHalf() { return Math.floor(_currentPeriod / 2); }
     function setCurrentPeriod(val) { _currentPeriod = val; }
     function incrementPeriod() { _currentPeriod ++; return getCurrentPeriod(); }
 
@@ -90,16 +91,47 @@ class FootballRefWatchApp extends Application.AppBase {
     
     function getTimeoutsHome() { return _timeoutsHome; }
     function resetTimeoutsHome() { _timeoutsHome = 3; return _timeoutsHome; }
-    function decrementTimeoutsHome() as Number { if (_timeoutsHome != 0) {_timeoutsHome = _timeoutsHome - 1;} return _timeoutsHome ; }
-    function incrementTimeoutsHome() as Number { if (_timeoutsHome != 3) {_timeoutsHome = _timeoutsHome + 1;} return _timeoutsHome ; }
+    function decrementTimeoutsHome() as Number { 
+        if (_timeoutsHome != 0) {
+            _timeoutsHome = _timeoutsHome - 1; 
+            _usedTimeoutsHome[calcTimeoutPosition(_timeoutsHome)] = getCurrentPeriod(); 
+        } 
+        return _timeoutsHome ; 
+    }
+    function incrementTimeoutsHome() as Number { 
+        if (_timeoutsHome != 3) {
+            _timeoutsHome = _timeoutsHome + 1; 
+            calcTimeoutPosition(_timeoutsHome);
+            _usedTimeoutsHome[calcTimeoutPosition(_timeoutsHome)] = null; 
+        } 
+        return _timeoutsHome ; 
+    }
 
     function getTimeoutsAway() { return _timeoutsAway; }
     function resetTimeoutsAway() { _timeoutsAway = 3; return _timeoutsAway; }
-    function decrementTimeoutsAway() as Number { if (_timeoutsAway != 0) {_timeoutsAway = _timeoutsAway - 1;} return _timeoutsAway; }
-    function incrementTimeoutsAway() as Number { if (_timeoutsAway != 3) {_timeoutsAway = _timeoutsAway + 1;} return _timeoutsAway; }
+    function decrementTimeoutsAway() as Number { 
+        if (_timeoutsAway != 0) {
+            _timeoutsAway = _timeoutsAway - 1;
+            _usedTimeoutsAway[calcTimeoutPosition(_timeoutsAway)] = getCurrentPeriod(); 
+        }
+        return _timeoutsAway; 
+    }
+    function incrementTimeoutsAway() as Number { 
+        if (_timeoutsAway != 3) {
+            _timeoutsAway = _timeoutsAway + 1;
+            _usedTimeoutsAway[calcTimeoutPosition(_timeoutsAway)] = null;
+        } 
+        return _timeoutsAway; 
+    }
 
     function isHalfTimeBreak() { return _isHalfTimeBreak; }
     function setHalfTimeBreak(val) { _isHalfTimeBreak = val; }
+
+    function calcTimeoutPosition(pos) {
+        var to = ((getCurrentHalf() - 1) * 3 ) + (3 - pos);
+        System.println("Timeout Position: " + to);
+        return to;
+    }
 
 
 

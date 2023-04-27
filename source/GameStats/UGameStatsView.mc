@@ -14,37 +14,9 @@ class UGameStatsView extends WatchUi.View {
     }
 
     function onShow() as Void {  
-        var startTimes = Application.getApp().getStartTimes();
-        var endTimes   = Application.getApp().getEndTimes();
-
-        for (var i = 0; i < Application.getApp().getNumPeriods(); i++) {
-            var start = null;
-            var end = null;
-            
-            if (startTimes.size() > i) {  start = startTimes[i]; }
-            if (endTimes.size() > i)   {  end   = endTimes[i];   }
-            
-            if (start != null) {
-                var time = start.hour.format("%02d") + ":" + start.min.format("%02d");
-                var duration = 0;
-                
-                if (end != null) {
-                    time += " - " + end.hour.format("%02d") + ":" + end.min.format("%02d");
-                    duration = (end.hour * 60 + end.min) - (start.hour * 60 + start.min);
-                }
-                var timeDraw = findDrawableById("time_" + i) as Text;
-                timeDraw.setText(time)
-
-                var durationDraw = findDrawableById("duration_" + i) as Text;
-                durationDraw.setText(duration.format("%02d"));
-            }
-            else {
-                var draw = findDrawableById("time_" + i) as Text;
-                draw.setText(" - / - ");
-                var durationDraw = findDrawableById("duration_" + i) as Text;
-                durationDraw.setText("-/-");
-            }
-            
+        for (var i = 1; i <= 6; i++) {
+            var homeLabel = findDrawableById("to_home_" + i);
+            var awayLabel = findDrawableById("to_away_" + i);
         }
     }
 
