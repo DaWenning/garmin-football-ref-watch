@@ -27,23 +27,18 @@ class UGameStatsView extends WatchUi.View {
             if (start != null) {
                 var time = start.hour.format("%02d") + ":" + start.min.format("%02d");
                 var duration = 0;
-                System.println(start.hour * 60 + start.min);
                 
                 if (end != null) {
                     time += " - " + end.hour.format("%02d") + ":" + end.min.format("%02d");
-                    System.println(end.hour * 60 + end.min);
                     duration = (end.hour * 60 + end.min) - (start.hour * 60 + start.min);
                 }
                 var timeDraw = findDrawableById("time_" + i) as Text;
-                timeDraw.setText(time);
-                System.println(i + ": " + time);
+                timeDraw.setText(time)
 
                 var durationDraw = findDrawableById("duration_" + i) as Text;
                 durationDraw.setText(duration.format("%02d"));
-                System.println(i + ": " + duration.format("%02d"));
             }
             else {
-                System.println(i + ": No Time ..." );
                 var draw = findDrawableById("time_" + i) as Text;
                 draw.setText(" - / - ");
                 var durationDraw = findDrawableById("duration_" + i) as Text;

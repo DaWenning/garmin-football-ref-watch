@@ -76,7 +76,6 @@ class BackJudgeView extends WatchUi.View {
             if (Application.getApp().getGameClockTime() == 0) {
 
                 if (Application.getApp().isHalfTimeBreak()) {
-                    System.println("End of Halftime ... ");
                     // ACTION: Set Next Period
                     Application.getApp().setHalfTimeBreak(false);
                     Application.getApp().incrementPeriod();
@@ -87,7 +86,6 @@ class BackJudgeView extends WatchUi.View {
                     setPeriodElementText();
                     WatchUi.requestUpdate();
                 } else if (Application.getApp().getCurrentPeriod() == 2 && Application.getApp().getNumPeriods() == 4) {
-                    System.println("Starting Halftime Break ...");
                     Application.getApp().setHalfTimeBreak(true);
                     Application.getApp().setGameClockToHalftime();
                     setGameClockElementText();
@@ -95,7 +93,6 @@ class BackJudgeView extends WatchUi.View {
                     _gameclockTimer.start(method(:updateGameclock), 100, true); 
                     WatchUi.requestUpdate();
                 } else if (Application.getApp().getCurrentPeriod() < Application.getApp().getNumPeriods()){
-                    System.println("Next Period ... ");
                     // ACTION: Set Next Period
                     Application.getApp().incrementPeriod();
                     _gameclockTimer.stop();

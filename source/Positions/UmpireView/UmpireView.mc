@@ -127,13 +127,11 @@ class UmpireView extends WatchUi.View {
         if (isHomeTeam) {
             _downElement.setColor(Graphics.COLOR_RED);
             var num = Application.getApp().decrementTimeoutsHome();
-            System.println("Timeouts remaining: " + num);
             _timeoutHomeLabel.setText(num.toString());
         }
         else {
             _downElement.setColor(Graphics.COLOR_BLUE);
             var num = Application.getApp().decrementTimeoutsAway();
-            System.println("Timeouts remaining: " + num);
             _timeoutAwayLabel.setText(num.toString());
         }
         

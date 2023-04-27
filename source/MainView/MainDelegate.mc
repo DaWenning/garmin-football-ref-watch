@@ -29,12 +29,10 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
 
 
          if ( y > 200) {
-            System.println("Pushing Umpire View ... ");
             var view = new UmpireView();
             WatchUi.pushView(view, new UmpireDelegate(view), WatchUi.SLIDE_UP);
          }
          else {
-            System.println("Pushing Backjudge View ...");
             var view = new BackJudgeView();
             WatchUi.pushView(view, new BackJudgeDelegate(view), WatchUi.SLIDE_UP);
          }
