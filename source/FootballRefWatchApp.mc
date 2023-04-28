@@ -100,9 +100,8 @@ class FootballRefWatchApp extends Application.AppBase {
     }
     function incrementTimeoutsHome() as Number { 
         if (_timeoutsHome != 3) {
-            _timeoutsHome = _timeoutsHome + 1; 
-            calcTimeoutPosition(_timeoutsHome);
             _usedTimeoutsHome[calcTimeoutPosition(_timeoutsHome)] = null; 
+            _timeoutsHome = _timeoutsHome + 1;
         } 
         return _timeoutsHome ; 
     }
@@ -118,8 +117,8 @@ class FootballRefWatchApp extends Application.AppBase {
     }
     function incrementTimeoutsAway() as Number { 
         if (_timeoutsAway != 3) {
-            _timeoutsAway = _timeoutsAway + 1;
             _usedTimeoutsAway[calcTimeoutPosition(_timeoutsAway)] = null;
+            _timeoutsAway = _timeoutsAway + 1;
         } 
         return _timeoutsAway; 
     }
@@ -133,7 +132,7 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function calcTimeoutPosition(pos) {
         var to = ((getCurrentHalf() - 1) * 3 ) + (3 - pos) - 1;
-        System.println("Position: " + to);
+        // System.println("Position: " + to);
         return to;
     }
 

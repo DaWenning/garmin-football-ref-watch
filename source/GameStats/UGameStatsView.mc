@@ -19,13 +19,13 @@ class UGameStatsView extends WatchUi.View {
         var _usedTimeoutsAway = Application.getApp().getUsedTimeoutsAway();
 
         for (var i = 0; i < 6; i++) {
-            System.println("Index: " + i);
+            // System.println("Index: " + i);
             var homeLabel = findDrawableById("to_home_" + i) as Text;
             var awayLabel = findDrawableById("to_away_" + i) as Text;
-            System.println(_usedTimeoutsHome[i]);
-            System.println(_usedTimeoutsAway[i]);
-            if (_usedTimeoutsHome[i] != null) {System.println("TO HOME["+i+"]: " + _usedTimeoutsHome[i]); homeLabel.setText(_usedTimeoutsHome[i] + "");}
-            if (_usedTimeoutsAway[i] != null) {System.println("TO AWAY["+i+"]: " + _usedTimeoutsAway[i]); awayLabel.setText(_usedTimeoutsAway[i] + "");}
+            // System.println(_usedTimeoutsHome[i]);
+            // System.println(_usedTimeoutsAway[i]);
+            if (_usedTimeoutsHome[i] != null) { homeLabel.setText(_usedTimeoutsHome[i] + ""); }
+            if (_usedTimeoutsAway[i] != null) { awayLabel.setText(_usedTimeoutsAway[i] + ""); }
         }
     }
 
