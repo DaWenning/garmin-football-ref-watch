@@ -79,7 +79,7 @@ class FootballRefWatchApp extends Application.AppBase {
     function setGameClockToHalftime() { _gameClockTime = _HALFTIME_LENGTH * 60 * 10;  }
 
     function getCurrentPeriod() { return _currentPeriod; }
-    function getCurrentHalf() { return Math.round(_currentPeriod / 2); }
+    function getCurrentHalf() { if (_currentPeriod == 1 || _currentPeriod == 2) {return 1; }else {return 2;}}
     function setCurrentPeriod(val) { _currentPeriod = val; }
     function incrementPeriod() { _currentPeriod ++; return getCurrentPeriod(); }
 
@@ -132,11 +132,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
 
     function calcTimeoutPosition(pos) {
-        System.println("Current Period: " + getCurrentPeriod());
-        System.println("Current Half: " + getCurrentHalf());
-
-        var to = (getCurrentHalf() * 3 ) + (3 - pos);
-        System.println("Timeout Position: " + to);
+        var to = ((getCurrentHalf() - 1) * 3 ) + (3 - pos) - 1;
+        System.println("Position: " + to);
         return to;
     }
 

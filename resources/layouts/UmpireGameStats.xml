@@ -1,18 +1,19 @@
 <layout id="UGameStats">
 
-    <label id="to_home_1" text="" y="40%" x="14%" font="Gfx.FONT_SMALL"/>
-    <label id="to_home_2" text="" y="40%" x="28%" font="Gfx.FONT_SMALL"/>
-    <label id="to_home_3" text="" y="40%" x="43%" font="Gfx.FONT_SMALL"/>
-    <label id="to_home_4" text="" y="40%" x="57%" font="Gfx.FONT_SMALL"/>
-    <label id="to_home_5" text="" y="40%" x="72%" font="Gfx.FONT_SMALL"/>
-    <label id="to_home_6" text="" y="40%" x="86%" font="Gfx.FONT_SMALL"/>
+    <label id="first_half"  text="1st Half" y="20%" x="25%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="second_half" text="2nd Half" y="20%" x="75%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
 
-    <label id="to_away_1" text="" y="60%" x="14%" font="Gfx.FONT_SMALL"/>
-    <label id="to_away_2" text="" y="60%" x="28%" font="Gfx.FONT_SMALL"/>
-    <label id="to_away_3" text=""  y="60%" x="43%" font="Gfx.FONT_SMALL"/>
-    <label id="to_away_4" text="" y="60%" x="57%" font="Gfx.FONT_SMALL"/>
-    <label id="to_away_5" text="" y="60%" x="72%" font="Gfx.FONT_SMALL"/>
-    <label id="to_away_6" text=""  y="60%" x="86%" font="Gfx.FONT_SMALL"/>
+    <label id="to_home_0" text="-" y="40%" x="10%" font="Gfx.FONT_SMALL"/>
+    <label id="to_home_1" text="-" y="40%" x="25%" font="Gfx.FONT_SMALL"/>
+    <label id="to_home_2" text="-" y="40%" x="40%" font="Gfx.FONT_SMALL"/>
+    <label id="to_home_3" text="-" y="40%" x="60%" font="Gfx.FONT_SMALL"/>
+    <label id="to_home_4" text="-" y="40%" x="75%" font="Gfx.FONT_SMALL"/>
+    <label id="to_home_5" text="-" y="40%" x="90%" font="Gfx.FONT_SMALL"/>
 
-    
+    <label id="to_away_0" text="-" y="60%" x="10%" font="Gfx.FONT_SMALL"/>
+    <label id="to_away_1" text="-" y="60%" x="25%" font="Gfx.FONT_SMALL"/>
+    <label id="to_away_2" text="-" y="60%" x="40%" font="Gfx.FONT_SMALL"/>
+    <label id="to_away_3" text="-" y="60%" x="60%" font="Gfx.FONT_SMALL"/>
+    <label id="to_away_4" text="-" y="60%" x="75%" font="Gfx.FONT_SMALL"/>
+    <label id="to_away_5" text="-" y="60%" x="90%" font="Gfx.FONT_SMALL"/>
 </layout>
