@@ -33,6 +33,25 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
 
     function onTap(clickEvent) as Boolean {
 
+
+        return true;
+    }
+
+    function onHold(holdEvent) as Boolean {
+
+        var coords = holdEvent.getCoordinates();
+        var settings = System.getDeviceSettings();
+
+        var x = coords[0];
+        var y = coords[1];
+
+        if (x < 75) {
+            homeTimeout();
+        }
+        else if (x > (settings.screenWidth - 75)) {
+            awayTimeout();
+        }
+        System.println("HOLD EVENT: " + settings.screenWidth);
         return true;
     }
 

@@ -134,6 +134,11 @@ class UmpireView extends WatchUi.View {
             var num = Application.getApp().decrementTimeoutsAway();
             _timeoutAwayLabel.setText(num.toString());
         }
+
+        var vibeData = [new Attention.VibeProfile(100, 500), 
+                            new Attention.VibeProfile(0, 100), 
+                            new Attention.VibeProfile(100, 500)];
+        Attention.vibrate(vibeData);
         
     }
 

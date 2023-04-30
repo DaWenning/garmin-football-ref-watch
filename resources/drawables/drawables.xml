@@ -33,4 +33,13 @@
         <shape type="rectangle" x="76%" y="60%"  width="23%" height="15%"  
         color="Gfx.COLOR_RED" border_width="1" border_color="Gfx.COLOR_WHITE"/>
     </drawable-list>
+
+    <drawable-list id="to_home_btn">
+        <shape type="rectangle" x="left" y="center"  width="75" height="100%"  
+        color="Gfx.COLOR_RED" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
+    <drawable-list id="to_away_btn">
+        <shape type="rectangle" x="right" y="center"  width="75" height="100%"  
+        color="Gfx.COLOR_BLUE" border_width="1" border_color="Gfx.COLOR_WHITE"/>
+    </drawable-list>
 </drawables>
