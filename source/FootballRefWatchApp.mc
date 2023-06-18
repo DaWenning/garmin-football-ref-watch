@@ -25,6 +25,8 @@ class FootballRefWatchApp extends Application.AppBase {
     private var _usedTimeoutsHome;
     private var _usedTimeoutsAway;
 
+    private var _activitySession;
+
     function initialize() {
         AppBase.initialize();        
 
@@ -52,11 +54,18 @@ class FootballRefWatchApp extends Application.AppBase {
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         Attention.backlight(0.6);
+        _activitySession = ActivityRecording.createSession({  // set up recording session
+            :name=>"Football Referee",                   // set session name
+            :sport=>Activity.SPORT_GENERIC,              // set sport type
+            :subSport=>Activity.SUB_SPORT_GENERIC        // set sub sport type
+        });
+        System.println(Activity.getActivityInfo());
+        _activitySession.start();
     }
 
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
-
+        _activitySession.stop();
     }
 
     // Return the initial view of your application here

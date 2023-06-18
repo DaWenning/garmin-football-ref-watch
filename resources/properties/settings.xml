@@ -1,14 +1,13 @@
 <settings>
     <setting propertyKey="@Properties.periodLength" title="Period length in minutes" prompt="Set period length...">
-        <settingConfig type="numeric" errorMessage="Error" />
+        <settingConfig type="numeric" errorMessage="Error" min="8" max="20"/>
     </setting>
 
     <setting propertyKey="@Properties.numPeriods" title="Number of Periods" prompt="Set # periods ...">
-        <settingConfig type="numeric" errorMessage="Error" />
+        <settingConfig type="numeric" errorMessage="Error" min="1" max="4"/>
     </setting>
 
     <setting propertyKey="@Properties.halfTimeLength" title="HalfTime Break length in minutes" prompt="Set halftime length ...">
-        <settingConfig type="numeric" errorMessage="Error" />
+        <settingConfig type="numeric" errorMessage="Error" min="8" max="20" />
     </setting>
-
 </settings>

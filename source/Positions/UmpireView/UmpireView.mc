@@ -88,19 +88,8 @@ class UmpireView extends WatchUi.View {
 
     function nextDown() {
         _currentDown ++;
-        if (_currentDown == 2) {
-            var vibeData = [new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200)];
-            Attention.vibrate(vibeData);
-        }
-        else if (_currentDown == 3) {
-            var vibeData = [new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200)];
-            Attention.vibrate(vibeData);
-        }
-        else if (_currentDown == 4) {
-            var vibeData = [new Attention.VibeProfile(100, 400), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 400)];
-            Attention.vibrate(vibeData);
-        }
-        else if (_currentDown == 5) {
+        vibrateForDown();
+        if (_currentDown == 5) {
             _currentDown = 1;
             var vibeData = [new Attention.VibeProfile(100, 1000)];
             Attention.vibrate(vibeData);
@@ -162,12 +151,24 @@ class UmpireView extends WatchUi.View {
         _timeoutTime = 0;
          _isInTimeout = false;
         _timeoutTimer.stop();
-        var vibeData = [new Attention.VibeProfile(100, 500), 
-                            new Attention.VibeProfile(0, 100), 
-                            new Attention.VibeProfile(100, 500)];
-        Attention.vibrate(vibeData);
+        vibrateForDown();
         _downElement.setColor(Graphics.COLOR_WHITE);
         _downElement.setText(_currentDown.toString());
+    }
+
+    function vibrateForDown() {
+        if (_currentDown == 2) {
+            var vibeData = [new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200)];
+            Attention.vibrate(vibeData);
+        }
+        else if (_currentDown == 3) {
+            var vibeData = [new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 200)];
+            Attention.vibrate(vibeData);
+        }
+        else if (_currentDown == 4) {
+            var vibeData = [new Attention.VibeProfile(100, 400), new Attention.VibeProfile(0, 100), new Attention.VibeProfile(100, 400)];
+            Attention.vibrate(vibeData);
+        }
     }
 
 }

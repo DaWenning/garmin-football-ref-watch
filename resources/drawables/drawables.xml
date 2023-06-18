@@ -1,5 +1,5 @@
 <drawables>
-    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="LauncherIcon" filename="RefWatchIcon.png" />
     <drawable-list id="ql_8_btn">
         <shape type="rectangle" x="1%" y="30%"  width="23%" height="15%"  
         color="Gfx.COLOR_TRANSPARENT" border_width="1" border_color="Gfx.COLOR_WHITE"/>
