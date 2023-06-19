@@ -1,6 +1,6 @@
 <strings>
     <string id="AppName">FootballRefWatch</string>
-    <string id="version">v0.3</string>
+    <string id="version">v0.4</string>
 
     <string id="prompt">Click the menu button</string>
 
@@ -9,4 +9,10 @@
     <string id="menu_resetTimer">Reset Timer</string>
     <string id="menu_settings">Quick Settings</string>
     <string id="menu_exit">Exit Application</string>
+
+    <string id="reset_period">Reset Period</string>
+
+    <string id="restart_game">Restart Game</string>
+    <string id="next_period">Next Period</string>
+    
 </strings>

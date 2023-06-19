@@ -11,21 +11,36 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
+        System.println("OnMenu");
+        if ((System.getDeviceSettings().inputButtons & System.BUTTON_INPUT_DOWN) == 0) {
+            if (! Application.getApp().isGameClockRunning()){
+                WatchUi.pushView(new Rez.Menus.BackJudgeMenu(), new BackJudgeMenuDelegate(), WatchUi.SLIDE_UP);
+            }
+        }
         return true;
+        
     }
 
     function onBack() as Boolean {
-        if (! Application.getApp().isGameClockRunning()){
-            WatchUi.pushView(new Rez.Menus.BackJudgeMenu(), new BackJudgeMenuDelegate(), WatchUi.SLIDE_UP);
+        System.println("OnBack");
+        if ((System.getDeviceSettings().inputButtons & System.BUTTON_INPUT_DOWN) != 0) {
+            if (! Application.getApp().isGameClockRunning()){
+                WatchUi.pushView(new Rez.Menus.BackJudgeMenu(), new BackJudgeMenuDelegate(), WatchUi.SLIDE_UP);
+            }
         }
         return true;
     }
 
     function onKey(keyEvent) as Boolean {
         
-        if (keyEvent.getKey() == 4 && !Application.getApp().isHalfTimeBreak()) {
-            // Start / Stop Timer
-            _view.toggleGameClock();
+        if ( keyEvent.getKey() == 4) {
+            if (!Application.getApp().isHalfTimeBreak()) {
+                // Start / Stop Timer
+                _view.toggleGameClock();
+            }
+        }
+        else {
+            System.println(keyEvent.getKey() + "");
         }
 
         return true;

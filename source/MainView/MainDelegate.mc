@@ -27,8 +27,10 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
         //var x = coords[0];
         var y = coords[1];
 
+        var settings = System.getDeviceSettings();
 
-         if ( y > 200) {
+
+         if ( y > (settings.screenWidth / 2)) {
             var view = new UmpireView();
             WatchUi.pushView(view, new UmpireDelegate(view), WatchUi.SLIDE_UP);
          }
@@ -37,6 +39,7 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
             WatchUi.pushView(view, new BackJudgeDelegate(view), WatchUi.SLIDE_UP);
          }
 
+        System.println("Y Koord: "  + y);
 
         return true;
     }

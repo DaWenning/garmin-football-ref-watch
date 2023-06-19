@@ -23,7 +23,7 @@ class UmpireMenuDelegate extends WatchUi.MenuInputDelegate {
             //WatchUi.popView(WatchUi.SLIDE_UP);
             var statsView = new UGameStatsView();
             WatchUi.pushView(statsView, new UGameStatsDelegate(statsView), WatchUi.SLIDE_UP);  
-        } else if (item == :next_quarter) {
+        } else if (item == :next_period) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
             var nextQuarter = Application.getApp().incrementPeriod();
             if (nextQuarter == 3) {

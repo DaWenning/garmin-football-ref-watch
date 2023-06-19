@@ -27,6 +27,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
     private var _activitySession;
 
+    private var _systemSettings;
+
     function initialize() {
         AppBase.initialize();        
 
@@ -59,8 +61,17 @@ class FootballRefWatchApp extends Application.AppBase {
             :sport=>Activity.SPORT_GENERIC,              // set sport type
             :subSport=>Activity.SUB_SPORT_GENERIC        // set sub sport type
         });
-        System.println(Activity.getActivityInfo());
+        _systemSettings = System.getDeviceSettings();
+        var buttons = _systemSettings.inputButtons;
+        System.println(buttons + "" );
+        if ((_systemSettings.inputButtons & System.BUTTON_INPUT_DOWN) != 0) {
+            System.println("Seperate DOWN Button");
+        }
+        // Venu: 137   1000 1001
+        // Fenix: 159  1001 1111
         _activitySession.start();
+
+        
     }
 
     // onStop() is called when your application is exiting
@@ -137,6 +148,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function getUsedTimeoutsHome() { return _usedTimeoutsHome; }
     function getUsedTimeoutsAway() { return _usedTimeoutsAway; }
+
+    function getSystemSettings() { return _systemSettings; }
 
 
     function calcTimeoutPosition(pos) {

@@ -2,8 +2,8 @@
     <menu-item id="back_to_position" label="Back to title" />
     <menu-item id="start_game" label="Back to BJ View" />
     <menu-item id="stats_of_last_game" label="@Strings.menu_stats" />
-    <menu-item id="resetQuarter" label="Reset Quarter" />
-    <menu-item id="restartGame" label="Restart Game" />
+    <menu-item id="reset_period" label="@Strings.reset_period" />
+    <menu-item id="restart_game" label="@Strings.restart_game" />
     <menu-item id="settings" label="@Strings.menu_settings" />
     <menu-item id="exit" label="@Strings.menu_exit" />
 </menu>
