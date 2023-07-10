@@ -27,6 +27,9 @@ class FootballRefWatchApp extends Application.AppBase {
 
     private var _activitySession;
 
+    private var _isDownClockRunning;
+    private var _downClockTime;
+
     private var _systemSettings;
 
     function initialize() {
@@ -151,6 +154,12 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function getSystemSettings() { return _systemSettings; }
 
+    function isDownClockRunning() { return _isDownClockRunning; }
+    function setDownClockRunning(val) { _isDownClockRunning = val;}
+
+    function getDownClockTime() { return _downClockTime; }
+    function decrementDownClockTime() { _downClockTime --; }
+    function resetDownClockTime(val) {_downClockTime = val;}
 
     function calcTimeoutPosition(pos) {
         var to = ((getCurrentHalf() - 1) * 3 ) + (3 - pos) - 1;
