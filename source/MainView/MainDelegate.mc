@@ -36,7 +36,7 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
             var view = new UmpireView();
             WatchUi.pushView(view, new UmpireDelegate(view), WatchUi.SLIDE_UP);
          }
-         else if (y > y &&  2*button >= y ){
+         else if (y > button &&  2*button >= y ){
             System.println("Backjudge");
             var view = new BackJudgeView();
             WatchUi.pushView(view, new BackJudgeDelegate(view), WatchUi.SLIDE_UP);

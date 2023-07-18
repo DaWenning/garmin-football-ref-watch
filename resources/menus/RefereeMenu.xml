@@ -1,0 +1,5 @@
+<menu id="RefereeMenu">
+    <menu-item id="back_to_position" label="Back to title" />
+    <menu-item id="start_game" label="Back to R View" />
+    <menu-item id="exit" label="@Strings.menu_exit" />
+</menu>

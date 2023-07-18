@@ -10,7 +10,10 @@ class RefereeDelegate extends WatchUi.BehaviorDelegate {
         _view = view;
     }
 
-    function onMenu() as Boolean { return true; }
+    function onMenu() as Boolean { 
+        WatchUi.pushView(new Rez.Menus.RefereeMenu(), new RefereeMenuDelegate(), WatchUi.SLIDE_UP);
+        return true; 
+    }
     function onBack() as Boolean { 
 
         _view.startDownClock(25);
