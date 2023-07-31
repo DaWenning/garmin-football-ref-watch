@@ -14,6 +14,7 @@ class MainView extends WatchUi.View {
     }
 
     function onShow() as Void {
+        WatchUi.pushView(new Rez.Menus.PositionSelectMenu(), new PositionSelectMenuDelegate(), WatchUi.SLIDE_UP);
     }
 
     // Update the view

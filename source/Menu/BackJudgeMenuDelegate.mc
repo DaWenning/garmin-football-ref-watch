@@ -16,7 +16,7 @@ class BackJudgeMenuDelegate extends WatchUi.MenuInputDelegate {
     function onMenuItem(item as Symbol) as Void {
         
         if (item == :back_to_position) {
-            WatchUi.pushView(new MainView(), new MainDelegate(), WatchUi.SLIDE_UP);
+            WatchUi.pushView(new Rez.Menus.PositionSelectMenu(), new PositionSelectMenuDelegate(), WatchUi.SLIDE_UP);
         } else if (item == :start_game) {
             //WatchUi.popView(WatchUi.SLIDE_UP);
         } else if (item == :stats_of_last_game) {

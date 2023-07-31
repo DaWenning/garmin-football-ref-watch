@@ -65,13 +65,6 @@ class FootballRefWatchApp extends Application.AppBase {
             :subSport=>Activity.SUB_SPORT_GENERIC        // set sub sport type
         });
         _systemSettings = System.getDeviceSettings();
-        var buttons = _systemSettings.inputButtons;
-        System.println(buttons + "" );
-        if ((_systemSettings.inputButtons & System.BUTTON_INPUT_DOWN) != 0) {
-            System.println("Seperate DOWN Button");
-        }
-        // Venu: 137   1000 1001
-        // Fenix: 159  1001 1111
         _activitySession.start();
 
         
@@ -84,6 +77,8 @@ class FootballRefWatchApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
+
+        
         return [new MainView(), new MainDelegate()] as Array<Views or InputDelegate>;
     }
 

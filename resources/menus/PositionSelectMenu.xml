@@ -1,0 +1,7 @@
+<menu id="PositionSelectMenu">
+    <menu-item id="umpire"    label="Umpire" />
+    <menu-item id="backjudge" label="Backjudge" />
+    <menu-item id="referee"   label="Referee" />
+
+    <menu-item id="exit" label="@Strings.menu_exit" />
+</menu>
