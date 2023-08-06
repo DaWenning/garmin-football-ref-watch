@@ -56,6 +56,7 @@ class BackJudgeView extends WatchUi.View {
     // memory.
     function onHide() as Void {
         _dayTimeTimer.stop();
+        _gameclockTimer.stop();
     }
 
 

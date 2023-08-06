@@ -74,6 +74,7 @@ class UmpireView extends WatchUi.View {
     // memory.
     function onHide() as Void {
         _dayTimeTimer.stop();
+        _timeoutTimer.stop();
     }
 
     function isInTimeout() { return _isInTimeout; }

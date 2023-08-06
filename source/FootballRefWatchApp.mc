@@ -73,12 +73,13 @@ class FootballRefWatchApp extends Application.AppBase {
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
         _activitySession.stop();
+        _activitySession.save();
+        _activitySession = null;
+        
     }
 
     // Return the initial view of your application here
-    function getInitialView() as Array<Views or InputDelegates>? {
-
-        
+    function getInitialView() as Array<Views or InputDelegates>? {        
         return [new MainView(), new MainDelegate()] as Array<Views or InputDelegate>;
     }
 

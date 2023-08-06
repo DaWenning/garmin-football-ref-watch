@@ -43,6 +43,7 @@ class RefereeView extends WatchUi.View {
 
     function onHide() as Void {
         _dayTimeTimer.stop();
+        _downclockTimer.stop();
     }
 
     function updateDayTime() as Void {
