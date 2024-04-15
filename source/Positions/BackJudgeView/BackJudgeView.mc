@@ -1,7 +1,6 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Attention;
-import Toybox.Sensor;
 
 class BackJudgeView extends WatchUi.View {
 
@@ -16,8 +15,6 @@ class BackJudgeView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
-        //Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
-        //Sensor.enableSensorEvents(method(:onHeartBeat));
     }
 
     // Load your resources here
@@ -43,7 +40,11 @@ class BackJudgeView extends WatchUi.View {
         updateDayTime();
         setGameClockElementText();
         setPeriodElementText();
-    }
+        if (Application.getApp().isHalfTimeBreak()) {
+            _gameclockTimer.start(method(:updateGameclock), 100, true); 
+            WatchUi.requestUpdate();
+        }
+    } 
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
@@ -56,7 +57,9 @@ class BackJudgeView extends WatchUi.View {
     // memory.
     function onHide() as Void {
         _dayTimeTimer.stop();
-        _gameclockTimer.stop();
+        if (!Application.getApp().isHalfTimeBreak()) {
+            _gameclockTimer.stop();
+        }        
     }
 
 
@@ -73,7 +76,7 @@ class BackJudgeView extends WatchUi.View {
             Application.getApp().setGameClockRunning(false);
         }
 
-        if (! Application.getApp().isGameClockRunning()) {
+        if (! Application.getApp().isGameClockRunning()) {         
             if (Application.getApp().getGameClockTime() == 0) {
 
                 if (Application.getApp().isHalfTimeBreak()) {
@@ -129,7 +132,10 @@ class BackJudgeView extends WatchUi.View {
     function updateGameclock() as Void {
 
         if (Application.getApp().getGameClockTime() == (TWO_MINUTES + 5)) {
-            if ((Application.getApp().getCurrentPeriod() == 2 || Application.getApp().getCurrentPeriod() == 4) && Application.getApp().getNumPeriods() == 4) {
+            if (
+                ((Application.getApp().getCurrentPeriod() == 2 || Application.getApp().getCurrentPeriod() == 4) && Application.getApp().getNumPeriods() == 4) || 
+                ((Application.getApp().getCurrentPeriod() == 1                                                ) && Application.getApp().getNumPeriods() == 2)
+                ) {
                 // Two Minute Warning
                 var vibeData = [new Attention.VibeProfile(100, 750)];
                 Attention.vibrate(vibeData);
@@ -170,9 +176,5 @@ class BackJudgeView extends WatchUi.View {
         else {
             _periodElement.setText(Application.getApp().getCurrentPeriod() + " / " + Application.getApp().getNumPeriods() + " Period");
         }
-    }
-
-    function onHeartBeat(info as Sensor.Info) as Void {
-        System.println("Heart Rate: " + info.heartRate);
     }
 }

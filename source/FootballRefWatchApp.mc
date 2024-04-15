@@ -16,7 +16,6 @@ class FootballRefWatchApp extends Application.AppBase {
     private var _currentPeriod;
     private var _isHalfTimeBreak;
 
-
     private var _startTimes;
     private var _endTimes;
 
@@ -32,11 +31,12 @@ class FootballRefWatchApp extends Application.AppBase {
 
     private var _systemSettings;
 
+    private var _oldBacklight;
+
     function initialize() {
         AppBase.initialize();        
 
         _isGameClockRunning = false;
-        _PERIOD_LENGTH = Properties.getValue("periodLength");
         if (_PERIOD_LENGTH == null) {
             _PERIOD_LENGTH = 12;
             Application.Properties.setValue("periodLength", _PERIOD_LENGTH);
@@ -58,11 +58,12 @@ class FootballRefWatchApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
-        Attention.backlight(0.6);
+        //Attention.backlight(0.6);
+
         _activitySession = ActivityRecording.createSession({  // set up recording session
             :name=>"Football Referee",                   // set session name
-            :sport=>Activity.SPORT_GENERIC,              // set sport type
-            :subSport=>Activity.SUB_SPORT_GENERIC        // set sub sport type
+            :sport=>Activity.SPORT_AMERICAN_FOOTBALL,              // set sport type
+            :subSport=>Activity.SUB_SPORT_FIELD        // set sub sport type
         });
         _systemSettings = System.getDeviceSettings();
         _activitySession.start();

@@ -1,7 +1,6 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Attention;
-import Toybox.Sensor;
 
 class RefereeView extends WatchUi.View {
 
@@ -14,8 +13,6 @@ class RefereeView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
-        //Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
-        //Sensor.enableSensorEvents(method(:onHeartBeat));
     }
 
     // Load your resources here
