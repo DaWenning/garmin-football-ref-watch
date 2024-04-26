@@ -1,28 +1,4 @@
 <layout id="Referee">
     <label id="downclock" text="40" x="center" y="center" font="Gfx.FONT_NUMBER_THAI_HOT" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <!--<label id="period" text="1. Quarter" x="center" y="60%" font="Gfx.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" /> -->
     <label id="daytime" text="00:00" x="center" y="90%" font="Gfx.FONT_TINY" color="Gfx.COLOR_DK_GRAY" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-
-    <!-- <button x="left" y="center" width="75" height="400" background="Graphics.COLOR_BLACK" behavior="homeTimeout">
-        <state id="stateDefault"     color="0xFF0000" />
-        <state id="stateHighlighted" color="0x440000" />
-        <state id="stateSelected"    color="Graphics.COLOR_WHITE" />
-        <state id="stateDisabled"    color="Graphics.COLOR_DK_GRAY" />
-    </button>
-    <button x="right" y="center" width="75" height="400" background="Graphics.COLOR_BLACK" behavior="awayTimeout">
-        <state id="stateDefault"     color="Graphics.COLOR_BLUE" />
-        <state id="stateHighlighted" color="Graphics.COLOR_DK_BLUE" />
-        <state id="stateSelected"    color="Graphics.COLOR_WHITE" />
-        <state id="stateDisabled"    color="Graphics.COLOR_DK_GRAY" />
-    </button> 
-
-    <drawable id="to_home_btn" class="TimeoutButton">
-        <param name="home">true</param>
-    </drawable>
-    <drawable id="to_away_btn" class="TimeoutButton">
-        <param name="home">false</param>
-    </drawable>
-
-    <label id="numHomeTimeouts" x="20%" y="7%" text="3" justification="Graphics.TEXT_JUSTIFY_LEFT"  font="Gfx.FONT_NUMBER_MILD"/>
-    <label id="numAwayTimeouts" x="80%" y="7%" text="3" justification="Graphics.TEXT_JUSTIFY_RIGHT" font="Gfx.FONT_NUMBER_MILD"/>-->
 </layout>

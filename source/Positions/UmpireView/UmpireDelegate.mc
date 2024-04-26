@@ -43,7 +43,6 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
         var settings = System.getDeviceSettings();
 
         var x = coords[0];
-        var y = coords[1];
 
         if (x < 75) {
             homeTimeout();
