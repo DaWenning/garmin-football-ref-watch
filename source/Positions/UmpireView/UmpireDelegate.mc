@@ -51,7 +51,6 @@ class UmpireDelegate extends WatchUi.BehaviorDelegate {
         else if (x > (settings.screenWidth - 75)) {
             awayTimeout();
         }
-        System.println("HOLD EVENT: " + settings.screenWidth);
         return true;
     }
 

@@ -38,6 +38,7 @@ class BackJudgeView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {        
         updateDayTime();
+        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
         setGameClockElementText();
         setPeriodElementText();
         if (Application.getApp().isHalfTimeBreak()) {

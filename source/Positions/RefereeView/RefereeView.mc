@@ -31,6 +31,7 @@ class RefereeView extends WatchUi.View {
 
     function onShow() as Void {
         updateDayTime();
+        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
     }
 
     function onUpdate(dc as Dc) as Void {
