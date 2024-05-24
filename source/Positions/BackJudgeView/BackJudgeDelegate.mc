@@ -11,7 +11,6 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
-        System.println("OnMenu");
         if ((System.getDeviceSettings().inputButtons & System.BUTTON_INPUT_DOWN) == 0) {
             if (! Application.getApp().isGameClockRunning()){
                 WatchUi.pushView(new Rez.Menus.BackJudgeMenu(), new BackJudgeMenuDelegate(), WatchUi.SLIDE_UP);
@@ -22,7 +21,6 @@ class BackJudgeDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
-        System.println("OnBack");
         if ((System.getDeviceSettings().inputButtons & System.BUTTON_INPUT_DOWN) != 0) {
             if (! Application.getApp().isGameClockRunning()){
                 WatchUi.pushView(new Rez.Menus.BackJudgeMenu(), new BackJudgeMenuDelegate(), WatchUi.SLIDE_UP);

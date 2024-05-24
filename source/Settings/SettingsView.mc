@@ -4,6 +4,8 @@ import Toybox.Attention;
 
 class SettingsView extends WatchUi.View {
 
+    private var hasChanges = false;
+
 
     function initialize() {
         View.initialize();
@@ -24,6 +26,7 @@ class SettingsView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
+        hasChanges = false;
     }
 
     // Update the view
@@ -36,6 +39,9 @@ class SettingsView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
+        if (hasChanges) {
+            Application.getApp().restartGame();
+        }
     }
 
     
@@ -57,6 +63,7 @@ class SettingsView extends WatchUi.View {
         Application.getApp().resetGameClock();
         //_mainView.resetStartOfGame();
         WatchUi.requestUpdate();
+        hasChanges = true;
     }
 
     function setNumPeriods(numPeriods) {
@@ -77,5 +84,6 @@ class SettingsView extends WatchUi.View {
         Application.getApp().resetGameClock();
         //_mainView.resetStartOfGame();
         WatchUi.requestUpdate();
+        hasChanges = true;
     }
 }

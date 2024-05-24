@@ -17,7 +17,7 @@ class BJGameStatsView extends WatchUi.View {
         var startTimes = Application.getApp().getStartTimes();
         var endTimes   = Application.getApp().getEndTimes();
 
-        for (var i = 0; i < Application.getApp().getNumPeriods(); i++) {
+        for (var i = 0; i < 4; i++) {
             var start = null;
             var end = null;
             
@@ -43,8 +43,7 @@ class BJGameStatsView extends WatchUi.View {
                 draw.setText(" - / - ");
                 var durationDraw = findDrawableById("duration_" + i) as Text;
                 durationDraw.setText("-/-");
-            }
-            
+            }            
         }
     }
 

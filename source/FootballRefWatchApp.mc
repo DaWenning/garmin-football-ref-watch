@@ -37,6 +37,8 @@ class FootballRefWatchApp extends Application.AppBase {
         AppBase.initialize();        
 
         _isGameClockRunning = false;
+
+        _PERIOD_LENGTH = Properties.getValue("periodLength");
         if (_PERIOD_LENGTH == null) {
             _PERIOD_LENGTH = 12;
             Application.Properties.setValue("periodLength", _PERIOD_LENGTH);
@@ -80,8 +82,8 @@ class FootballRefWatchApp extends Application.AppBase {
     }
 
     // Return the initial view of your application here
-    function getInitialView() as Array<Views or InputDelegates>? {        
-        return [new MainView(), new MainDelegate()] as Array<Views or InputDelegate>;
+    function getInitialView() {        
+        return [new MainView(), new MainDelegate()];
     }
 
     function getPeriodLength() { return _PERIOD_LENGTH; }
@@ -168,9 +170,9 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function restartGame() {
         resetGameClock();
-        _currentPeriod = 1;
-        _startTimes = new Array<System.ClockTime>[_NUM_PERIODS];
-        _endTimes = new Array<System.ClockTime>[_NUM_PERIODS];
+        _currentPeriod    = 1;
+        _startTimes       = new Array<System.ClockTime>[4];
+        _endTimes         = new Array<System.ClockTime>[4];
         _usedTimeoutsHome = new Array<Number>[6];
         _usedTimeoutsAway = new Array<Number>[6];
         _timeoutsHome = 3;
