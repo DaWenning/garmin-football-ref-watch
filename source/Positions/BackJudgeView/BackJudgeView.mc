@@ -138,11 +138,11 @@ class BackJudgeView extends WatchUi.View {
                 ((Application.getApp().getCurrentPeriod() == 1                                                ) && Application.getApp().getNumPeriods() == 2)
                 ) {
                 // Two Minute Warning
-                var vibeData = [new Attention.VibeProfile(100, 750)];
+                var vibeData = [new Attention.VibeProfile(100, 750), new Attention.VibeProfile(0, 750), new Attention.VibeProfile(100, 750), new Attention.VibeProfile(0, 750), new Attention.VibeProfile(100, 750)];
                 Attention.vibrate(vibeData);
             }            
         }
-        else if (Application.getApp().getGameClockTime() == 0) {
+        else if (Application.getApp().getGameClockTime() == 0 && ! Application.getApp().isHalfTimeBreak()) {
 
             Application.getApp().pushEndTime(System.getClockTime());                
             var vibeData = [new Attention.VibeProfile(100, 300), 
