@@ -11,6 +11,7 @@
     <string id="menu_exit">Exit Application</string>
 
     <string id="reset_period">Reset Period</string>
+    <string id="skip_halftime">Skip Break</string>
 
     <string id="restart_game">Restart Game</string>
     <string id="next_period">Next Period</string>

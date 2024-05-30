@@ -5,7 +5,7 @@ import Toybox.WatchUi;
 class BackJudgeMenuDelegate extends WatchUi.MenuInputDelegate {
 
     function initialize() {
-        MenuInputDelegate.initialize();       
+        MenuInputDelegate.initialize();   
     }
 
     function onBack() as Boolean {
@@ -22,6 +22,8 @@ class BackJudgeMenuDelegate extends WatchUi.MenuInputDelegate {
         } else if (item == :stats_of_last_game) {
             var statsView = new BJGameStatsView();
             WatchUi.pushView(statsView, new BJGameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
+        } else if (item == :skip_halftime && Application.getApp().isHalfTimeBreak()) {
+            Application.getApp().dropTimer();
         } else if (item == :reset_quarter) {
             Application.getApp().resetGameClock();
         } else if (item == :restart_game) {

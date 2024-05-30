@@ -97,6 +97,7 @@ class FootballRefWatchApp extends Application.AppBase {
 
     function getGameClockTime() { return _gameClockTime; }
     function decrementGameClockTime() { _gameClockTime --; }
+    function dropTimer() {_gameClockTime = 10;}
     function resetGameClock() { _gameClockTime = getPeriodLength() * 60 * 10; }
     function setGameClockToHalftime() { _gameClockTime = _HALFTIME_LENGTH * 60 * 10;  }
 
