@@ -23,12 +23,12 @@ class BackJudgeView extends WatchUi.View {
 
 
         _dayTimeElement = findDrawableById("daytime");
-        _dayTimeTimer = new Timer.Timer();
-        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
+        //_dayTimeTimer = new Timer.Timer();
+        //Application.getApp().getDayTimeTimer().start(method(:updateDayTime), 1000, true);
 
         _gameclockElement = findDrawableById("gameclock") as Text;
         _periodElement = findDrawableById("period") as Text;
-        _gameclockTimer = new Timer.Timer();
+        //_gameclockTimer = new Timer.Timer();
 
         WatchUi.requestUpdate();
     }
@@ -38,11 +38,12 @@ class BackJudgeView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {        
         updateDayTime();
-        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
+        
+        Application.getApp().startDayTimeTimer(method(:updateDayTime), 1000);
         setGameClockElementText();
         setPeriodElementText();
         if (Application.getApp().isHalfTimeBreak()) {
-            _gameclockTimer.start(method(:updateGameclock), 100, true); 
+            Application.getApp().startViewTimer(method(:updateGameclock), 100); 
             WatchUi.requestUpdate();
         }
     } 
@@ -57,13 +58,12 @@ class BackJudgeView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
-        _dayTimeTimer.stop();
+        //_dayTimeTimer.stop();
+        Application.getApp().getDayTimeTimer().stop();
         if (!Application.getApp().isHalfTimeBreak()) {
-            _gameclockTimer.stop();
+            Application.getApp().getViewTimer().stop();
         }        
     }
-
-
 
     function updateDayTime() as Void {
         var myTime = System.getClockTime();
@@ -72,11 +72,6 @@ class BackJudgeView extends WatchUi.View {
     }
 
     function toggleGameClock() {
-        if (_gameclockTimer == null) {
-            _gameclockTimer = new Timer.Timer();
-            Application.getApp().setGameClockRunning(false);
-        }
-
         if (! Application.getApp().isGameClockRunning()) {         
             if (Application.getApp().getGameClockTime() == 0) {
 
@@ -84,7 +79,7 @@ class BackJudgeView extends WatchUi.View {
                     // ACTION: Set Next Period
                     Application.getApp().setHalfTimeBreak(false);
                     Application.getApp().incrementPeriod();
-                    _gameclockTimer.stop();
+                    Application.getApp().getViewTimer().stop();//_gameclockTimer.stop();
                     Application.getApp().setGameClockRunning(false);
                     Application.getApp().resetGameClock();
                     setGameClockElementText();
@@ -95,12 +90,12 @@ class BackJudgeView extends WatchUi.View {
                     Application.getApp().setGameClockToHalftime();
                     setGameClockElementText();
                     setPeriodElementText();
-                    _gameclockTimer.start(method(:updateGameclock), 100, true); 
+                    Application.getApp().startViewTimer(method(:updateGameclock), 100); //_gameclockTimer.start(method(:updateGameclock), 100, true); 
                     WatchUi.requestUpdate();
                 } else if (Application.getApp().getCurrentPeriod() < Application.getApp().getNumPeriods()){
                     // ACTION: Set Next Period
                     Application.getApp().incrementPeriod();
-                    _gameclockTimer.stop();
+                    Application.getApp().getViewTimer().stop();//_gameclockTimer.stop();
                     Application.getApp().setGameClockRunning(false);
                     Application.getApp().resetGameClock();
                     setGameClockElementText();
@@ -118,14 +113,14 @@ class BackJudgeView extends WatchUi.View {
                 }
                 // ACTION: start GameClock
                 Attention.vibrate([new Attention.VibeProfile(100, 200)]);
-                _gameclockTimer.start(method(:updateGameclock), 100, true); 
+                Application.getApp().startViewTimer(method(:updateGameclock), 100); //_gameclockTimer.start(method(:updateGameclock), 100, true);  
                 Application.getApp().setGameClockRunning(true);
             }
         }
         else {
             // ACTION: stop GameClock
             Attention.vibrate([new Attention.VibeProfile(100, 200)]);
-            _gameclockTimer.stop();
+            Application.getApp().getViewTimer().stop();//_gameclockTimer.stop();
             Application.getApp().setGameClockRunning(false);
         }
     }

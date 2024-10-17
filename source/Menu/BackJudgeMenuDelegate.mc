@@ -13,8 +13,7 @@ class BackJudgeMenuDelegate extends WatchUi.MenuInputDelegate {
         return true;
     }
     
-    function onMenuItem(item as Symbol) as Void {
-        
+    function onMenuItem(item as Symbol) as Void {        
         if (item == :back_to_position) {
             WatchUi.pushView(new Rez.Menus.PositionSelectMenu(), new PositionSelectMenuDelegate(), WatchUi.SLIDE_UP);
         } else if (item == :start_game) {
@@ -24,7 +23,7 @@ class BackJudgeMenuDelegate extends WatchUi.MenuInputDelegate {
             WatchUi.pushView(statsView, new BJGameStatsDelegate(statsView), WatchUi.SLIDE_UP);      
         } else if (item == :skip_halftime && Application.getApp().isHalfTimeBreak()) {
             Application.getApp().dropTimer();
-        } else if (item == :reset_quarter) {
+        } else if (item == :reset_period) {
             Application.getApp().resetGameClock();
         } else if (item == :restart_game) {
             Application.getApp().restartGame();

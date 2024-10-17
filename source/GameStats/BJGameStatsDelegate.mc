@@ -3,11 +3,8 @@ import Toybox.WatchUi;
 
 class BJGameStatsDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _view;
-
     function initialize(view) {
         BehaviorDelegate.initialize();
-        _view = view;
     }
 
     function onMenu() as Boolean {
@@ -19,13 +16,11 @@ class BJGameStatsDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    function onKey(keyEvent) as Boolean {
-        
+    function onKey(keyEvent) as Boolean {        
         return true;
     }
 
     function onTap(clickEvent) as Boolean {
-
         return true;
     }
 

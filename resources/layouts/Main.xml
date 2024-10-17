@@ -3,7 +3,4 @@
 
     <bitmap id="stopwatchIcon" x="15%" y="20%" filename="../drawables/stopwatch_60.png" />
     <bitmap id="footballIcon"  x="15%" y="45%" filename="../drawables/football_60.png" />
-    <label id="backjudge"  text="Backjudge" x="35%" y="20%"/>
-    <label id="umpire"     text="Umpire"    x="35%" y="45%"/>
-    <label id="referee"     text="Referee"    x="35%" y="70%"/>
 </layout>

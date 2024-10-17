@@ -3,11 +3,9 @@ import Toybox.WatchUi;
 
 class UGameStatsDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _view;
 
     function initialize(view) {
         BehaviorDelegate.initialize();
-        _view = view;
     }
 
     function onMenu() as Boolean {

@@ -20,18 +20,18 @@ class RefereeView extends WatchUi.View {
         setLayout(Rez.Layouts.Referee(dc));
 
         _dayTimeElement = findDrawableById("daytime");
-        _dayTimeTimer = new Timer.Timer();
-        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
+        //_dayTimeTimer = new Timer.Timer();
+        //_dayTimeTimer.start(method(:updateDayTime), 1000, true);
 
         _downclockElement = findDrawableById("downclock") as Text;
-        _downclockTimer = new Timer.Timer();  
+        //_downclockTimer = new Timer.Timer();  
 
         WatchUi.requestUpdate();
     }
 
     function onShow() as Void {
         updateDayTime();
-        _dayTimeTimer.start(method(:updateDayTime), 1000, true);
+        Application.getApp().startDayTimeTimer(method(:updateDayTime), 1000);
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -40,8 +40,10 @@ class RefereeView extends WatchUi.View {
     }
 
     function onHide() as Void {
-        _dayTimeTimer.stop();
-        _downclockTimer.stop();
+        //_dayTimeTimer.stop();
+        //_downclockTimer.stop();
+        Application.getApp().getDayTimeTimer().stop();
+        Application.getApp().getViewTimer().stop();
     }
 
     function updateDayTime() as Void {
@@ -51,25 +53,21 @@ class RefereeView extends WatchUi.View {
     }
 
     function startDownClock(time) {
-        if (_downclockTimer == null) {
-            _downclockTimer = new Timer.Timer();
-            Application.getApp().setDownClockRunning(false);
-        }
         System.println("StartDownClock");
         
         Application.getApp().resetDownClockTime(time * 10);
-        _downclockTimer.start(method(:updateDownclock), 100, true); 
+        Application.getApp().startViewTimer(method(:updateDownclock), 100); 
         Attention.vibrate([new Attention.VibeProfile(100, 200)]);
         
     }
 
     function updateDownclock() {
-        if (Application.getApp().getDownClockTime() == 150) {
+        if (Application.getApp().getDownClockTime() == 10) {
             Attention.vibrate([new Attention.VibeProfile(100, 500)]);
         }
         else if (Application.getApp().getDownClockTime() == 0) {
-            Attention.vibrate([new Attention.VibeProfile(100, 300),new Attention.VibeProfile(100, 300),new Attention.VibeProfile(100, 500)]);
-            _downclockTimer.stop();
+            Attention.vibrate([new Attention.VibeProfile(100, 300),new Attention.VibeProfile(0, 300),new Attention.VibeProfile(100, 500)]);
+            Application.getApp().getViewTimer().stop();
         }
         Application.getApp().decrementDownClockTime();
         setDownClockElementText();
